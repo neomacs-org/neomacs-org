@@ -42,7 +42,7 @@ const Navbar = () => (
         <a href="#performance">Performance</a>
         <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer" className="github-btn">
           <Github size={18} />
-          GitHub
+          Star on GitHub
         </a>
       </div>
     </div>
