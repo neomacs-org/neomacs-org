@@ -166,19 +166,27 @@ const EmacsPreview = () => (
           <div className="frame-text">NEO Emacs — init.el</div>
         </div>
         <div className="emacs-content">
-          <div className="code-line"><span className="line-no">1</span><span className="code-comment">;; Welcome to the future of editing</span></div>
-          <div className="code-line"><span className="line-no">2</span>(require 'neo-emacs)</div>
-          <div className="code-line"><span className="line-no">3</span>&nbsp;</div>
-          <div className="code-line"><span className="line-no">4</span><span className="code-comment">;; GPU Acceleration enabled</span></div>
-          <div className="code-line"><span className="line-no">5</span>(setq neomacs-gpu-backend 'vulkan)</div>
-          <div className="code-line"><span className="line-no">6</span>(setq neomacs-render-fps 120)</div>
-          <div className="code-line"><span className="line-no">7</span>&nbsp;</div>
-          <div className="code-line"><span className="line-no">8</span><span className="code-comment">;; Activating future effects</span></div>
-          <div className="code-line"><span className="line-no">9</span>(neomacs-cursor-mode 'pixiedust)</div>
-          <div className="code-line"><span className="line-no">10</span>(neomacs-scroll-effect 'wobbly)</div>
-          <div className="code-line"><span className="line-no">11</span>&nbsp;</div>
-          <div className="code-line"><span className="line-no">12</span><span className="code-keyword">(message "NEO Emacs is ready.")</span></div>
-          <div className="cursor-blink"></div>
+          <div className="line-numbers">
+            {Array.from({ length: 16 }, (_, i) => (
+              <div key={i + 1} className="line-no">{i + 1}</div>
+            ))}
+          </div>
+          <div className="code-area">
+            <div className="code-line"><span className="code-comment">;; Welcome to the future of editing</span></div>
+            <div className="code-line">(require 'neo-emacs)</div>
+            <div className="code-line">&nbsp;</div>
+            <div className="code-line"><span className="code-comment">;; GPU Acceleration enabled</span></div>
+            <div className="code-line">(setq neomacs-gpu-backend 'vulkan)</div>
+            <div className="code-line">(setq neomacs-render-fps 120)</div>
+            <div className="code-line">&nbsp;</div>
+            <div className="code-line"><span className="code-comment">;; Activating future effects</span></div>
+            <div className="code-line">(neomacs-cursor-mode 'pixiedust)</div>
+            <div className="code-line">(neomacs-scroll-effect 'wobbly)</div>
+            <div className="code-line">&nbsp;</div>
+            <div className="code-line">
+              <span className="code-keyword">(message "NEO Emacs is ready.")</span><span className="cursor-blink"></span>
+            </div>
+          </div>
         </div>
         
         <div className="emacs-mode-line">

@@ -282,20 +282,29 @@
 }
 
 .emacs-content {
-  padding: 2.5rem;
+  display: flex;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.95rem;
   line-height: 1.6;
   min-height: 400px;
 }
 
-.line-no {
-  display: inline-block;
-  width: 2rem;
-  margin-right: 1.5rem;
+.line-numbers {
+  padding: 2rem 1rem 2rem 1.5rem;
+  background: #0d0d0d;
   color: #333;
   text-align: right;
   user-select: none;
+  border-right: 1px solid #1a1a1a;
+}
+
+.code-area {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.line-no {
+  height: 1.6rem; /* Match line-height of code */
 }
 
 .emacs-mode-line {
@@ -361,10 +370,10 @@
 
 .cursor-blink {
   width: 8px;
-  height: 1.2rem;
+  height: 1.1rem;
   background: var(--accent-color);
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   margin-left: 2px;
   box-shadow: 0 0 10px var(--accent-color);
   animation: blink 1s step-end infinite;
