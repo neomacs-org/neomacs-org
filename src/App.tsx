@@ -78,8 +78,8 @@ const Hero = () => (
         transition={{ delay: 0.4, duration: 0.8 }}
         className="hero-subtitle"
       >
-        Rewrite in Rust. Multi-threaded. Rendered by GPU. 100% Config Compatible. <br />
-        Unlock 120fps performance, modern graphics, and true parallel execution for your favorite editor.
+        Aiming for modern design, multi-threaded Elisp, 10x performance and 100% Emacs compatibility. <br />
+        Unlock 120fps rendering, modern graphics, and true parallel execution for your favorite editor.
       </motion.p>
       
       <motion.div 
