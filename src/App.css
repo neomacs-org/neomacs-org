@@ -238,59 +238,126 @@
   line-height: 1.6;
 }
 
-/* Terminal Preview */
-.preview-section {
-  padding: 4rem 0;
-}
-
-.terminal-window {
-  background: #0f0f0f;
+/* Emacs Window Layout */
+.emacs-window {
+  background: #0a0a0a;
   border: 1px solid #333;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-  max-width: 900px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+  max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.terminal-header {
+.emacs-frame-title {
   background: #1a1a1a;
-  padding: 0.75rem 1rem;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #000;
 }
 
-.terminal-controls {
+.frame-controls {
   display: flex;
-  gap: 0.5rem;
+  gap: 6px;
+  margin-right: 16px;
 }
 
-.terminal-controls span {
-  width: 12px;
-  height: 12px;
+.frame-controls span {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #333;
 }
 
-.terminal-title {
+.frame-text {
+  font-size: 0.75rem;
+  color: #666;
+  font-family: 'Inter', sans-serif;
   flex-grow: 1;
   text-align: center;
-  font-size: 0.8rem;
-  color: #666;
-  font-family: 'JetBrains Mono', monospace;
+  margin-right: 60px; /* Offset for center alignment */
 }
 
-.terminal-body {
-  padding: 2rem;
+.emacs-content {
+  padding: 2.5rem;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.95rem;
   line-height: 1.6;
-  min-height: 300px;
+  min-height: 400px;
+}
+
+.line-no {
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1.5rem;
+  color: #333;
+  text-align: right;
+  user-select: none;
+}
+
+.emacs-mode-line {
+  background: #1a1a1a;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #aaa;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #000;
+}
+
+.mode-line-left, .mode-line-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mode-tag { color: #50fa7b; font-weight: bold; }
+.file-name { color: #fff; font-weight: bold; }
+.major-mode { 
+  color: #8be9fd; 
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mode-icon {
+  color: #bd93f9;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.gpu-stat { 
+  background: rgba(255, 77, 77, 0.2); 
+  color: var(--accent-color); 
+  padding: 0 6px; 
+  border-radius: 4px;
+}
+
+.emacs-echo-area {
+  background: #0a0a0a;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.echo-message {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .code-keyword { color: #ff79c6; }
 .code-string { color: #f1fa8c; }
-.code-comment { color: #6272a4; }
+.code-comment { color: #6272a4; font-style: italic; }
 
 .cursor-blink {
   width: 8px;
@@ -299,6 +366,7 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 2px;
+  box-shadow: 0 0 10px var(--accent-color);
   animation: blink 1s step-end infinite;
 }
 

@@ -155,30 +155,50 @@ const Features = () => (
   </section>
 );
 
-const TerminalPreview = () => (
+const EmacsPreview = () => (
   <section className="preview-section">
     <div className="container">
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-controls">
+      <div className="emacs-window">
+        <div className="emacs-frame-title">
+          <div className="frame-controls">
             <span></span><span></span><span></span>
           </div>
-          <div className="terminal-title">NEO Emacs — The Emacs from the Future</div>
+          <div className="frame-text">NEO Emacs — init.el</div>
         </div>
-        <div className="terminal-body">
-          <div className="code-line"><span className="code-comment">;; Welcome to the future of editing</span></div>
-          <div className="code-line">(require 'neo-emacs)</div>
-          <div className="code-line">&nbsp;</div>
-          <div className="code-line"><span className="code-comment">;; GPU Acceleration enabled</span></div>
-          <div className="code-line">(setq neomacs-gpu-backend 'vulkan)</div>
-          <div className="code-line">(setq neomacs-render-fps 120)</div>
-          <div className="code-line">&nbsp;</div>
-          <div className="code-line"><span className="code-comment">;; Activating future effects</span></div>
-          <div className="code-line">(neomacs-cursor-mode 'pixiedust)</div>
-          <div className="code-line">(neomacs-scroll-effect 'wobbly)</div>
-          <div className="code-line">&nbsp;</div>
-          <div className="code-line"><span className="code-keyword">Ready to launch...</span></div>
+        <div className="emacs-content">
+          <div className="code-line"><span className="line-no">1</span><span className="code-comment">;; Welcome to the future of editing</span></div>
+          <div className="code-line"><span className="line-no">2</span>(require 'neo-emacs)</div>
+          <div className="code-line"><span className="line-no">3</span>&nbsp;</div>
+          <div className="code-line"><span className="line-no">4</span><span className="code-comment">;; GPU Acceleration enabled</span></div>
+          <div className="code-line"><span className="line-no">5</span>(setq neomacs-gpu-backend 'vulkan)</div>
+          <div className="code-line"><span className="line-no">6</span>(setq neomacs-render-fps 120)</div>
+          <div className="code-line"><span className="line-no">7</span>&nbsp;</div>
+          <div className="code-line"><span className="line-no">8</span><span className="code-comment">;; Activating future effects</span></div>
+          <div className="code-line"><span className="line-no">9</span>(neomacs-cursor-mode 'pixiedust)</div>
+          <div className="code-line"><span className="line-no">10</span>(neomacs-scroll-effect 'wobbly)</div>
+          <div className="code-line"><span className="line-no">11</span>&nbsp;</div>
+          <div className="code-line"><span className="line-no">12</span><span className="code-keyword">(message "NEO Emacs is ready.")</span></div>
           <div className="cursor-blink"></div>
+        </div>
+        
+        <div className="emacs-mode-line">
+          <div className="mode-line-left">
+            <span className="mode-tag">U:---</span>
+            <span className="file-name">init.el</span>
+            <span className="file-pos">(64%)</span>
+            <span className="major-mode">
+              <span className="mode-icon">λ</span> elisp/l NEO
+            </span>
+          </div>
+          <div className="mode-line-right">
+            <span className="gpu-stat">GPU: Vulkan</span>
+            <span className="fps-stat">120 FPS</span>
+            <span className="line-num">L12:C1</span>
+          </div>
+        </div>
+        
+        <div className="emacs-echo-area">
+          <span className="echo-message">NEO Emacs initialized in 0.001s. [Render Engine: wgpu]</span>
         </div>
       </div>
     </div>
@@ -190,7 +210,7 @@ const App = () => {
     <div className="app">
       <Navbar />
       <Hero />
-      <TerminalPreview />
+      <EmacsPreview />
       <Features />
       
       <footer className="footer">
