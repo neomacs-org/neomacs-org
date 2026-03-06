@@ -78,8 +78,8 @@ const Hero = () => (
         transition={{ delay: 0.4, duration: 0.8 }}
         className="hero-subtitle"
       >
-        Aiming for modern design, multi-threaded Elisp, 10x performance and 100% Emacs compatibility. <br />
-        Unlock 120fps rendering, modern graphics, and true parallel execution for your favorite editor.
+        Rewritten in Rust. Rendered by GPU. <br />
+        Aiming for modern design, multi-threaded Elisp, 10x performance and 100% Emacs compatibility.
       </motion.p>
       
       <motion.div 
