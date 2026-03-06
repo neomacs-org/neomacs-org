@@ -69,7 +69,7 @@ const Hero = () => (
         className="hero-title"
       >
         The <span className="gradient-text">Emacs</span> from <br />
-        the <span className="glow-text">Future</span>
+        the <span className="glow-text">Future</span> <span className="wip-tag">(WIP)</span>
       </motion.h1>
       
       <motion.p 
