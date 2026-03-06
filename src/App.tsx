@@ -59,7 +59,7 @@ const Hero = () => (
         className="hero-badge"
       >
         <Zap size={14} className="badge-icon" />
-        GPU-Accelerated Emacs
+        GPU-Accelerated Emacs Powered by Rust
       </motion.div>
       
       <motion.h1 
