@@ -163,7 +163,7 @@ const TerminalPreview = () => (
           <div className="terminal-controls">
             <span></span><span></span><span></span>
           </div>
-          <div className="terminal-title">neomacs — dashboard</div>
+          <div className="terminal-title">NEO Emacs — The Emacs from the Future</div>
         </div>
         <div className="terminal-body">
           <div className="code-line"><span className="code-keyword">import</span> <span className="code-string">"neomacs"</span></div>
