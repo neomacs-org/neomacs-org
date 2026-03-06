@@ -1,1 +1,0 @@
-# neomacs.org
