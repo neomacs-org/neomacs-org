@@ -166,7 +166,8 @@ const TerminalPreview = () => (
           <div className="terminal-title">NEO Emacs — The Emacs from the Future</div>
         </div>
         <div className="terminal-body">
-          <div className="code-line"><span className="code-keyword">import</span> <span className="code-string">"neomacs"</span></div>
+          <div className="code-line"><span className="code-comment">;; Welcome to the future of editing</span></div>
+          <div className="code-line">(require 'neo-emacs)</div>
           <div className="code-line">&nbsp;</div>
           <div className="code-line"><span className="code-comment">;; GPU Acceleration enabled</span></div>
           <div className="code-line">(setq neomacs-gpu-backend 'vulkan)</div>
