@@ -40,7 +40,7 @@ const Navbar = () => (
       <div className="nav-links">
         <a href="#features">Features</a>
         <a href="#performance">Performance</a>
-        <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer" className="github-btn">
+        <a href="https://github.com/neomacs-org/neomacs" target="_blank" rel="noopener noreferrer" className="github-btn">
           <Github size={18} />
           GitHub
         </a>
@@ -88,7 +88,7 @@ const Hero = () => (
         transition={{ delay: 0.6, duration: 0.8 }}
         className="hero-actions"
       >
-        <a href="https://github.com/eval-exec/neomacs" className="primary-btn">
+        <a href="https://github.com/neomacs-org/neomacs" className="primary-btn">
           Get Started <ChevronRight size={18} />
         </a>
         <button className="secondary-btn">
