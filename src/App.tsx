@@ -35,7 +35,7 @@ const Navbar = () => (
   <nav className="navbar">
     <div className="container nav-content">
       <div className="logo">
-        <span className="logo-text">NEO Emacs</span>
+        <span className="logo-text">NEO Emacs <span className="logo-wip">(WIP)</span></span>
       </div>
       <div className="nav-links">
         <a href="#features">Features</a>

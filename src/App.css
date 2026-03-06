@@ -26,6 +26,15 @@
   color: var(--text-color);
 }
 
+.logo-wip {
+  font-size: 0.7rem;
+  font-weight: 400;
+  opacity: 0.6;
+  margin-left: 0.3rem;
+  letter-spacing: 0;
+  vertical-align: top;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
