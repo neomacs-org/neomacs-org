@@ -197,7 +197,7 @@ const App = () => {
           <div className="footer-logo">NEO Emacs</div>
           <p>© 2026 Neomacs Project. Built for the modern age.</p>
           <div className="social-links">
-            <a href="#"><Github size={20} /></a>
+            <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
           </div>
         </div>
       </footer>
