@@ -223,18 +223,34 @@ const Sponsors = () => (
       
       <div className="sponsors-container">
         <div className="sponsor-cta-card">
-          <div className="cta-icon">
-            <Github size={32} />
+          <div className="cta-header">
+            <div className="cta-icon">
+              <Github size={32} />
+            </div>
+            <div className="cta-text">
+              <h3>Become a Sponsor</h3>
+              <p>Support NEO Emacs directly via GitHub Sponsors. Every contribution helps us develop and maintain the NEO Emacs project for the long term.</p>
+            </div>
           </div>
-          <h3>Become a Sponsor</h3>
-          <p>Support NEO Emacs directly via GitHub Sponsors. Every contribution helps us develop and maintain the NEO Emacs project for the long term.</p>
-          <a href="https://github.com/sponsors/eval-exec" target="_blank" rel="noopener noreferrer" className="primary-btn">
-            Sponsor on GitHub
-          </a>
+          <div className="cta-action">
+            <a href="https://github.com/sponsors/eval-exec" target="_blank" rel="noopener noreferrer" className="primary-btn">
+              Sponsor on GitHub
+            </a>
+          </div>
         </div>
         
         <div className="sponsors-grid">
-           {/* Placeholder for future sponsors */}
+           <a href="https://辞暮尔尔.0056烟火年年.fm1212.com/jLaJm" target="_blank" rel="noopener noreferrer" className="partner-ad-card">
+             <div className="ad-badge">Partner</div>
+             <div className="ad-content">
+               <h4>凤凰棋牌 FH.APP</h4>
+               <span className="ad-link">Visit Site <ExternalLink size={14} /></span>
+             </div>
+           </a>
+           
+           <div className="sponsor-placeholder">
+             <span>Your Logo Here</span>
+           </div>
            <div className="sponsor-placeholder">
              <span>Your Logo Here</span>
            </div>
