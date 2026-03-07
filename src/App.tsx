@@ -213,6 +213,40 @@ const EmacsPreview = () => (
   </section>
 );
 
+const Sponsors = () => (
+  <section id="sponsors" className="sponsors-section">
+    <div className="container">
+      <div className="section-header">
+        <h2>Support the Future</h2>
+        <p>Help us accelerate the Rust core rewrite and GPU engine development.</p>
+      </div>
+      
+      <div className="sponsors-container">
+        <div className="sponsor-cta-card">
+          <div className="cta-icon">
+            <Github size={32} />
+          </div>
+          <h3>Become a Sponsor</h3>
+          <p>Support NEO Emacs directly via GitHub Sponsors. Every contribution helps us develop and maintain the NEO Emacs project for the long term.</p>
+          <a href="https://github.com/sponsors/eval-exec" target="_blank" rel="noopener noreferrer" className="primary-btn">
+            Sponsor on GitHub
+          </a>
+        </div>
+        
+        <div className="sponsors-grid">
+           {/* Placeholder for future sponsors */}
+           <div className="sponsor-placeholder">
+             <span>Your Logo Here</span>
+           </div>
+           <div className="sponsor-placeholder">
+             <span>Your Logo Here</span>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 const App = () => {
   return (
     <div className="app">
@@ -220,6 +254,7 @@ const App = () => {
       <Hero />
       <EmacsPreview />
       <Features />
+      <Sponsors />
       
       <footer className="footer">
         <div className="container footer-content">
