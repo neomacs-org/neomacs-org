@@ -56,12 +56,35 @@
 .github-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   padding: 0.5rem 1rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
   color: var(--text-color) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.github-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+}
+
+.btn-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.separator {
+  opacity: 0.3;
+  margin: 0 4px;
+}
+
+.sponsor-heart {
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 5px rgba(255, 77, 77, 0.4));
 }
 
 /* Hero Section */

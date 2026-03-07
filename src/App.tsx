@@ -11,7 +11,9 @@ import {
   MousePointer2, 
   Layout, 
   ShieldCheck,
-  ChevronRight
+  ChevronRight,
+  Star,
+  Heart
 } from 'lucide-react';
 import './App.css';
 
@@ -41,8 +43,15 @@ const Navbar = () => (
         <a href="#features">Features</a>
         <a href="#performance">Performance</a>
         <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer" className="github-btn">
-          <Github size={18} />
-          Star on GitHub
+          <div className="btn-item">
+            <Star size={14} fill="currentColor" />
+            <span>Star</span>
+          </div>
+          <span className="separator">/</span>
+          <div className="btn-item">
+            <Heart size={14} fill="currentColor" className="sponsor-heart" />
+            <span>Sponsor on GitHub</span>
+          </div>
         </a>
       </div>
     </div>
