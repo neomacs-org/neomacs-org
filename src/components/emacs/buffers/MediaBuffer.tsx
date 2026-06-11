@@ -69,7 +69,7 @@ const ImageFigure = () => (
       letterSpacing="5"
       fontFamily={MONO}
     >
-      NEO EMACS
+      NEO Emacs
     </text>
     <text
       x="170"
@@ -80,15 +80,7 @@ const ImageFigure = () => (
       fontStyle="italic"
       fontFamily={MONO}
     >
-      (the editor of lists)
-    </text>
-
-    {/* top-left s-expression */}
-    <text x="22" y="26" fill="#50fa7b" fontSize="9" fontFamily={MONO}>
-      (defun future ()
-    </text>
-    <text x="22" y="38" fill="#50fa7b" fontSize="9" fontFamily={MONO}>
-      {"  (neo 'emacs))"}
+      (the future of Emacs)
     </text>
 
     {/* top-right dotted pair */}
