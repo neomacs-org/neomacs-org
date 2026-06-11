@@ -1,4 +1,15 @@
 import type { ReactNode } from 'react';
+import {
+  ChevronDown,
+  ChevronRight,
+  FolderOpen,
+  Folder,
+  FileText,
+  Image as ImageIcon,
+  Film,
+  Package,
+  Snowflake,
+} from 'lucide-react';
 import type { BufferDef } from '../types';
 
 /* ---- init.el ---- */
@@ -159,9 +170,71 @@ const NICKS_LINES: ReactNode[] = [
   <span className="nick-plain">{' '}you</span>,
 ];
 
+/* ---- file tree (treemacs style, mirrors the real neomacs repo) ---- */
+
+const dirRow = (depth: number, open: boolean, name: string, root?: boolean) => (
+  <div className={`tree-row d${depth}${root ? ' root' : ''}`}>
+    <span className="tree-chevron">
+      {open ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
+    </span>
+    <span className="tree-icon dir">{open ? <FolderOpen size={13} /> : <Folder size={13} />}</span>
+    <span className="tree-name">{name}</span>
+  </div>
+);
+
+const fileRow = (
+  depth: number,
+  icon: ReactNode,
+  name: string,
+  opts?: { sel?: boolean; dim?: boolean },
+) => (
+  <div className={`tree-row d${depth}${opts?.sel ? ' sel' : ''}${opts?.dim ? ' dim' : ''}`}>
+    <span className="tree-chevron"></span>
+    <span className="tree-icon">{icon}</span>
+    <span className="tree-name">{name}</span>
+  </div>
+);
+
+const elIcon = <span className="nf-el">λ</span>;
+
+const TREE_LINES: ReactNode[] = [
+  dirRow(0, true, '~/neomacs', true),
+  dirRow(1, false, 'admin'),
+  dirRow(1, true, 'assets'),
+  fileRow(2, <ImageIcon size={13} className="nf-img" />, 'neo-emacs.svg'),
+  fileRow(2, <Film size={13} className="nf-film" />, 'demo.webm'),
+  dirRow(1, false, 'doc'),
+  dirRow(1, false, 'etc'),
+  dirRow(1, true, 'lisp'),
+  fileRow(2, elIcon, 'subr.el', { sel: true }),
+  fileRow(2, elIcon, 'simple.el'),
+  fileRow(2, elIcon, 'files.el'),
+  dirRow(1, false, 'modules'),
+  dirRow(1, false, 'neomacs-bin'),
+  dirRow(1, false, 'neomacs-renderer-wgpu'),
+  dirRow(1, false, 'neovm-compiler'),
+  dirRow(1, false, 'neovm-engine'),
+  dirRow(1, false, 'neovm-gc'),
+  dirRow(1, false, 'test'),
+  fileRow(1, <Package size={13} className="nf-pkg" />, 'Cargo.toml'),
+  fileRow(1, <Package size={13} className="nf-pkg" />, 'Cargo.lock', { dim: true }),
+  fileRow(1, <Snowflake size={13} className="nf-nix" />, 'flake.nix'),
+  fileRow(1, <FileText size={13} className="nf-doc" />, 'README.md'),
+  fileRow(1, <FileText size={13} className="nf-doc" />, 'COPYING', { dim: true }),
+];
+
 /* ---- registry ---- */
 
 export const BUFFERS: Record<string, BufferDef> = {
+  tree: {
+    kind: 'lines',
+    name: 'treemacs',
+    mode: 'Tree',
+    tag: 'U:%%-',
+    pos: '(All)',
+    lines: TREE_LINES,
+    variant: 'tree',
+  },
   init: {
     kind: 'code',
     name: 'init.el',

@@ -9,34 +9,47 @@ import './emacs.css';
 const MAIN_TREE: WindowNode = {
   type: 'split',
   dir: 'h',
-  ratio: 0.52,
+  ratio: 0.19,
   children: [
     {
       type: 'window',
-      id: 'code',
-      buffers: ['init', 'early-init', 'scratch'],
-      right: [
-        { label: 'GPU: Vulkan', accent: true },
-        { label: '120 FPS' },
-        { label: 'L19:C31' },
-      ],
+      id: 'tree',
+      buffers: ['tree'],
+      right: [],
     },
     {
       type: 'split',
-      dir: 'v',
-      ratio: 0.58,
+      dir: 'h',
+      ratio: 0.52,
       children: [
         {
           type: 'window',
-          id: 'media',
-          buffers: ['media', 'messages'],
-          right: [{ label: '4K decode', accent: true }],
+          id: 'code',
+          buffers: ['init', 'early-init', 'scratch'],
+          right: [
+            { label: 'GPU: Vulkan', accent: true },
+            { label: '120 FPS' },
+            { label: 'L19:C31' },
+          ],
         },
         {
-          type: 'window',
-          id: 'webkit',
-          buffers: ['webkit-home', 'webkit-docs'],
-          right: [{ label: 'WPE', accent: true }],
+          type: 'split',
+          dir: 'v',
+          ratio: 0.58,
+          children: [
+            {
+              type: 'window',
+              id: 'media',
+              buffers: ['media', 'messages'],
+              right: [{ label: '4K decode', accent: true }],
+            },
+            {
+              type: 'window',
+              id: 'webkit',
+              buffers: ['webkit-home', 'webkit-docs'],
+              right: [{ label: 'WPE', accent: true }],
+            },
+          ],
         },
       ],
     },
@@ -105,6 +118,7 @@ const WORKSPACES: Record<string, Workspace> = {
 };
 
 const WINDOW_ECHO: Record<string, string> = {
+  tree: 'Treemacs: workspace ~/neomacs — 8 dirs, 9 files',
   code: 'NEO Emacs initialized in 0.001s. [Render Engine: wgpu]',
   media: 'Decoding demo.webm on GPU — zero-copy into wgpu texture.',
   webkit: 'WPE WebKit buffer ready — https://neomacs.org',
