@@ -13,26 +13,29 @@ const EvalApply = () => (
       d="M20 1.5 a18.5 18.5 0 0 1 0 37 a9.25 9.25 0 0 1 0 -18.5 a9.25 9.25 0 0 0 0 -18.5 Z"
       fill="#ff9900"
     />
+    {/* each lambda rides its comma: wide base in the head bulb,
+        narrow apex pointing into the tail */}
     <text
-      x="11.5"
-      y="26"
+      x="15.5"
+      y="16.2"
       textAnchor="middle"
-      fontSize="14"
+      fontSize="12.5"
       fontWeight="bold"
       fill="#0d0d12"
       fontFamily="JetBrains Mono, monospace"
+      transform="rotate(225 15.5 11.5)"
     >
       λ
     </text>
     <text
-      x="11.5"
-      y="26"
+      x="15.5"
+      y="16.2"
       textAnchor="middle"
-      fontSize="14"
+      fontSize="12.5"
       fontWeight="bold"
       fill="#0d0d12"
       fontFamily="JetBrains Mono, monospace"
-      transform="rotate(180 20 20)"
+      transform="rotate(180 20 20) rotate(225 15.5 11.5)"
     >
       λ
     </text>
