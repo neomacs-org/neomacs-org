@@ -262,6 +262,16 @@
 }
 
 /* Emacs frame simulation styles live in src/components/emacs/emacs.css */
+.preview-container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .preview-container {
+    width: calc(100% - 2rem);
+  }
+}
 
 /* Sponsors Section */
 .sponsors-section {

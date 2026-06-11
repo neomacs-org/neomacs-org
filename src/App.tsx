@@ -163,7 +163,7 @@ const Features = () => (
 
 const EmacsPreview = () => (
   <section className="preview-section">
-    <div className="container">
+    <div className="preview-container">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
