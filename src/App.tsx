@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Zap, 
-  Cpu, 
-  Layers, 
-  Terminal, 
-  ExternalLink, 
-  Github, 
-  Monitor, 
-  MousePointer2, 
-  Layout, 
+import { motion } from 'framer-motion';
+import {
+  Zap,
+  Cpu,
+  Layers,
+  Github,
+  Monitor,
+  MousePointer2,
   ShieldCheck,
   ChevronRight,
   Star,
   Heart
 } from 'lucide-react';
+import { EmacsFrame } from './components/emacs/EmacsFrame';
 import './App.css';
 
 const FeatureCard = ({ icon: Icon, title, description, delay }: any) => (
@@ -167,57 +164,14 @@ const Features = () => (
 const EmacsPreview = () => (
   <section className="preview-section">
     <div className="container">
-      <div className="emacs-window">
-        <div className="emacs-frame-title">
-          <div className="frame-controls">
-            <span></span><span></span><span></span>
-          </div>
-          <div className="frame-text">NEO Emacs — init.el</div>
-        </div>
-        <div className="emacs-content">
-          <div className="line-numbers">
-            {Array.from({ length: 16 }, (_, i) => (
-              <div key={i + 1} className="line-no">{i + 1}</div>
-            ))}
-          </div>
-          <div className="code-area">
-            <div className="code-line"><span className="code-comment">;; Welcome to the future of editing</span></div>
-            <div className="code-line">(require 'neo-emacs)</div>
-            <div className="code-line">&nbsp;</div>
-            <div className="code-line"><span className="code-comment">;; GPU Acceleration enabled</span></div>
-            <div className="code-line">(setq neomacs-gpu-backend 'vulkan)</div>
-            <div className="code-line">(setq neomacs-render-fps 120)</div>
-            <div className="code-line">&nbsp;</div>
-            <div className="code-line"><span className="code-comment">;; Activating future effects</span></div>
-            <div className="code-line">(neomacs-cursor-mode 'pixiedust)</div>
-            <div className="code-line">(neomacs-scroll-effect 'wobbly)</div>
-            <div className="code-line">&nbsp;</div>
-            <div className="code-line">
-              <span className="code-keyword">(message "NEO Emacs is ready.")</span><span className="cursor-blink"></span>
-            </div>
-          </div>
-        </div>
-        
-        <div className="emacs-mode-line">
-          <div className="mode-line-left">
-            <span className="mode-tag">U:---</span>
-            <span className="file-name">init.el</span>
-            <span className="file-pos">(64%)</span>
-            <span className="major-mode">
-              <span className="mode-icon">λ</span> elisp/l NEO
-            </span>
-          </div>
-          <div className="mode-line-right">
-            <span className="gpu-stat">GPU: Vulkan</span>
-            <span className="fps-stat">120 FPS</span>
-            <span className="line-num">L12:C1</span>
-          </div>
-        </div>
-        
-        <div className="emacs-echo-area">
-          <span className="echo-message">NEO Emacs initialized in 0.001s. [Render Engine: wgpu]</span>
-        </div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
+        <EmacsFrame />
+      </motion.div>
     </div>
   </section>
 );
