@@ -58,6 +58,43 @@
   color: #777;
 }
 
+.tab-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  align-self: center;
+  padding-bottom: 4px;
+  margin-right: 18px;
+}
+
+.eval-apply {
+  width: 22px;
+  height: 22px;
+  display: block;
+  animation: eval-apply-spin 6s linear infinite;
+}
+
+@keyframes eval-apply-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eval-apply {
+    animation: none;
+  }
+}
+
+.tab-bar-badge {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-color);
+  background: rgba(255, 77, 77, 0.08);
+  border: 1px solid rgba(255, 77, 77, 0.35);
+  padding: 2px 9px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
 .tab-bar-tab {
   display: flex;
   align-items: center;
@@ -1060,7 +1097,12 @@
 
   .mode-pos,
   .major-mode,
-  .tab-bar-hint {
+  .tab-bar-hint,
+  .tab-bar-badge {
     display: none;
+  }
+
+  .tab-bar-brand {
+    margin-right: 10px;
   }
 }
