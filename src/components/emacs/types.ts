@@ -1,10 +1,4 @@
-export interface TabLineTab {
-  label: string;
-  active?: boolean;
-  closable?: boolean;
-}
-
-export type BufferKind = 'code' | 'media' | 'webkit';
+import type { ReactNode } from 'react';
 
 export type FringeKind = 'added' | 'modified' | 'breakpoint';
 
@@ -18,21 +12,25 @@ export interface ModeLineStat {
   accent?: boolean;
 }
 
-export interface ModeLineInfo {
-  tag: string;
+/* Mode-line chrome shared by every buffer */
+export interface BufferChrome {
   name: string;
-  pos: string;
   mode: string;
-  right: ModeLineStat[];
+  tag: string;
+  pos: string;
 }
+
+export type BufferDef =
+  | ({ kind: 'code'; lines: ReactNode[]; fringe?: FringeIndicator[] } & BufferChrome)
+  | ({ kind: 'media' } & BufferChrome)
+  | ({ kind: 'webkit'; url: string; page: 'home' | 'docs' } & BufferChrome)
+  | ({ kind: 'lines'; lines: ReactNode[]; variant?: string } & BufferChrome);
 
 export interface WindowSpec {
   type: 'window';
   id: string;
-  buffer: BufferKind;
-  tabLine: TabLineTab[];
-  modeLine: ModeLineInfo;
-  leftFringe?: FringeIndicator[];
+  buffers: string[]; /* buffer ids shown in this window's tab-line; first is default */
+  right: ModeLineStat[];
 }
 
 export interface SplitSpec {
@@ -43,3 +41,10 @@ export interface SplitSpec {
 }
 
 export type WindowNode = WindowSpec | SplitSpec;
+
+export interface Workspace {
+  label: string;
+  tree: WindowNode;
+  defaultWindow: string;
+  echo: string;
+}

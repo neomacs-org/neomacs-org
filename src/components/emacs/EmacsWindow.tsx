@@ -1,9 +1,11 @@
-import type { FringeIndicator, WindowSpec } from './types';
+import type { BufferDef, FringeIndicator, WindowSpec } from './types';
+import { BUFFERS } from './buffers/registry';
 import { TabLine } from './TabLine';
 import { ModeLine } from './ModeLine';
 import { CodeBuffer } from './buffers/CodeBuffer';
 import { MediaBuffer } from './buffers/MediaBuffer';
 import { WebkitBuffer } from './buffers/WebkitBuffer';
+import { LinesBuffer } from './buffers/LinesBuffer';
 
 const Fringe = ({
   side,
@@ -28,26 +30,59 @@ const Fringe = ({
   </div>
 );
 
+const BufferView = ({ buffer }: { buffer: BufferDef }) => {
+  switch (buffer.kind) {
+    case 'code':
+      return <CodeBuffer lines={buffer.lines} />;
+    case 'media':
+      return <MediaBuffer />;
+    case 'webkit':
+      return <WebkitBuffer url={buffer.url} page={buffer.page} />;
+    case 'lines':
+      return <LinesBuffer lines={buffer.lines} variant={buffer.variant} />;
+  }
+};
+
 interface Props {
   spec: WindowSpec;
+  activeBufferId: string;
   selected: boolean;
   onSelect: () => void;
+  onSelectBuffer: (bufferId: string) => void;
 }
 
-export const EmacsWindow = ({ spec, selected, onSelect }: Props) => (
-  <div className={`emacs-window${selected ? ' selected' : ''}`} onClick={onSelect}>
-    <TabLine tabs={spec.tabLine} />
-    <div className="emacs-window-body">
-      <div className="window-margin left" title="left margin"></div>
-      <Fringe side="left" indicators={spec.leftFringe} />
-      <div className="window-text">
-        {spec.buffer === 'code' && <CodeBuffer />}
-        {spec.buffer === 'media' && <MediaBuffer />}
-        {spec.buffer === 'webkit' && <WebkitBuffer url="https://neomacs.org" />}
+export const EmacsWindow = ({ spec, activeBufferId, selected, onSelect, onSelectBuffer }: Props) => {
+  const buffer = BUFFERS[activeBufferId];
+  return (
+    <div className={`emacs-window${selected ? ' selected' : ''}`} onClick={onSelect}>
+      <TabLine
+        tabs={spec.buffers.map((id) => ({
+          id,
+          label: BUFFERS[id].name,
+          closable: BUFFERS[id].kind === 'webkit',
+        }))}
+        active={activeBufferId}
+        onSelect={onSelectBuffer}
+      />
+      <div className="emacs-window-body">
+        <div className="window-margin left" title="left margin"></div>
+        <Fringe side="left" indicators={buffer.kind === 'code' ? buffer.fringe : undefined} />
+        <div className="window-text buffer-fade" key={activeBufferId}>
+          <BufferView buffer={buffer} />
+        </div>
+        <Fringe side="right" />
+        <div className="window-margin right" title="right margin"></div>
       </div>
-      <Fringe side="right" />
-      <div className="window-margin right" title="right margin"></div>
+      <ModeLine
+        info={{
+          tag: buffer.tag,
+          name: buffer.name,
+          pos: buffer.pos,
+          mode: buffer.mode,
+          right: spec.right,
+        }}
+        active={selected}
+      />
     </div>
-    <ModeLine info={spec.modeLine} active={selected} />
-  </div>
-);
+  );
+};

@@ -1,16 +1,28 @@
-const TABS = [
-  { label: 'main', active: true },
-  { label: 'mail', active: false },
-  { label: 'irc', active: false },
-];
+export interface TabBarTab {
+  id: string;
+  label: string;
+}
 
-export const TabBar = () => (
+export const TabBar = ({
+  tabs,
+  active,
+  onSelect,
+}: {
+  tabs: TabBarTab[];
+  active: string;
+  onSelect: (id: string) => void;
+}) => (
   <div className="emacs-tab-bar" title="tab-bar (frame-level workspaces)">
-    {TABS.map((tab, i) => (
-      <div key={tab.label} className={`tab-bar-tab${tab.active ? ' active' : ''}`}>
+    {tabs.map((tab, i) => (
+      <button
+        key={tab.id}
+        type="button"
+        className={`tab-bar-tab${tab.id === active ? ' active' : ''}`}
+        onClick={() => onSelect(tab.id)}
+      >
         <span className="tab-index">{i + 1}</span>
         {tab.label}
-      </div>
+      </button>
     ))}
     <div className="tab-bar-tab tab-bar-new">+</div>
     <div className="tab-bar-hint">tab-bar-mode</div>

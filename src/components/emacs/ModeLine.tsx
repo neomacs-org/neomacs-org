@@ -1,4 +1,12 @@
-import type { ModeLineInfo } from './types';
+import type { ModeLineStat } from './types';
+
+export interface ModeLineInfo {
+  tag: string;
+  name: string;
+  pos: string;
+  mode: string;
+  right: ModeLineStat[];
+}
 
 export const ModeLine = ({ info, active }: { info: ModeLineInfo; active: boolean }) => (
   <div className={`emacs-mode-line${active ? ' active' : ''}`}>

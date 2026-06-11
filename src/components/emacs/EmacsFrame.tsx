@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import type { WindowNode } from './types';
+import type { WindowNode, Workspace } from './types';
+import { BUFFERS } from './buffers/registry';
 import { TabBar } from './TabBar';
 import { EmacsWindow } from './EmacsWindow';
 import { EchoArea } from './EchoArea';
 import './emacs.css';
 
-const FRAME_TREE: WindowNode = {
+const MAIN_TREE: WindowNode = {
   type: 'split',
   dir: 'h',
   ratio: 0.52,
@@ -13,29 +14,11 @@ const FRAME_TREE: WindowNode = {
     {
       type: 'window',
       id: 'code',
-      buffer: 'code',
-      tabLine: [
-        { label: 'init.el', active: true },
-        { label: 'early-init.el' },
-        { label: '*scratch*' },
-      ],
-      modeLine: {
-        tag: 'U:---',
-        name: 'init.el',
-        pos: '(64%)',
-        mode: 'elisp/l NEO',
-        right: [
-          { label: 'GPU: Vulkan', accent: true },
-          { label: '120 FPS' },
-          { label: 'L16:C31' },
-        ],
-      },
-      leftFringe: [
-        { line: 5, kind: 'modified' },
-        { line: 6, kind: 'modified' },
-        { line: 9, kind: 'added' },
-        { line: 10, kind: 'added' },
-        { line: 16, kind: 'breakpoint' },
+      buffers: ['init', 'early-init', 'scratch'],
+      right: [
+        { label: 'GPU: Vulkan', accent: true },
+        { label: '120 FPS' },
+        { label: 'L19:C31' },
       ],
     },
     {
@@ -46,53 +29,109 @@ const FRAME_TREE: WindowNode = {
         {
           type: 'window',
           id: 'media',
-          buffer: 'media',
-          tabLine: [{ label: 'media.org', active: true }, { label: '*Messages*' }],
-          modeLine: {
-            tag: 'U:%%-',
-            name: 'media.org',
-            pos: '(Top)',
-            mode: 'Org/media',
-            right: [{ label: '4K decode', accent: true }],
-          },
+          buffers: ['media', 'messages'],
+          right: [{ label: '4K decode', accent: true }],
         },
         {
           type: 'window',
           id: 'webkit',
-          buffer: 'webkit',
-          tabLine: [
-            { label: 'neomacs.org', active: true, closable: true },
-            { label: 'docs', closable: true },
-          ],
-          modeLine: {
-            tag: 'U:%%-',
-            name: '*webkit*',
-            pos: '(All)',
-            mode: 'WebKit',
-            right: [{ label: 'WPE', accent: true }],
-          },
+          buffers: ['webkit-home', 'webkit-docs'],
+          right: [{ label: 'WPE', accent: true }],
         },
       ],
     },
   ],
 };
 
-const ECHO_MESSAGES: Record<string, string> = {
+const MAIL_TREE: WindowNode = {
+  type: 'split',
+  dir: 'v',
+  ratio: 0.42,
+  children: [
+    {
+      type: 'window',
+      id: 'mail-headers',
+      buffers: ['mail-inbox'],
+      right: [{ label: '4 mail', accent: true }, { label: '1 unread' }],
+    },
+    {
+      type: 'window',
+      id: 'mail-view',
+      buffers: ['mail-view'],
+      right: [{ label: 'mu4e' }],
+    },
+  ],
+};
+
+const IRC_TREE: WindowNode = {
+  type: 'split',
+  dir: 'h',
+  ratio: 0.74,
+  children: [
+    {
+      type: 'window',
+      id: 'irc-chat',
+      buffers: ['irc-neomacs', 'irc-emacs'],
+      right: [{ label: 'libera.chat', accent: true }],
+    },
+    {
+      type: 'window',
+      id: 'irc-nicks',
+      buffers: ['nicks'],
+      right: [{ label: '6' }],
+    },
+  ],
+};
+
+const WORKSPACES: Record<string, Workspace> = {
+  main: {
+    label: 'main',
+    tree: MAIN_TREE,
+    defaultWindow: 'code',
+    echo: 'NEO Emacs initialized in 0.001s. [Render Engine: wgpu]',
+  },
+  mail: {
+    label: 'mail',
+    tree: MAIL_TREE,
+    defaultWindow: 'mail-headers',
+    echo: 'mu4e: contacting mail server... 4 messages retrieved',
+  },
+  irc: {
+    label: 'irc',
+    tree: IRC_TREE,
+    defaultWindow: 'irc-chat',
+    echo: 'ERC: connected to irc.libera.chat — joined #neomacs',
+  },
+};
+
+const WINDOW_ECHO: Record<string, string> = {
   code: 'NEO Emacs initialized in 0.001s. [Render Engine: wgpu]',
   media: 'Decoding demo.webm on GPU — zero-copy into wgpu texture.',
   webkit: 'WPE WebKit buffer ready — https://neomacs.org',
+  'mail-headers': '4 messages in INBOX (1 unread)',
+  'mail-view': 'Viewing message from The Lisp Machine',
+  'irc-chat': 'ERC: #neomacs — 6 users',
+  'irc-nicks': '6 users on #neomacs',
 };
 
 interface TreeProps {
   node: WindowNode;
   selected: string;
-  onSelect: (id: string) => void;
+  bufferFor: (windowId: string, defaultId: string) => string;
+  onSelectWindow: (id: string) => void;
+  onSelectBuffer: (windowId: string, bufferId: string) => void;
 }
 
-const WindowTree = ({ node, selected, onSelect }: TreeProps) => {
+const WindowTree = ({ node, selected, bufferFor, onSelectWindow, onSelectBuffer }: TreeProps) => {
   if (node.type === 'window') {
     return (
-      <EmacsWindow spec={node} selected={selected === node.id} onSelect={() => onSelect(node.id)} />
+      <EmacsWindow
+        spec={node}
+        activeBufferId={bufferFor(node.id, node.buffers[0])}
+        selected={selected === node.id}
+        onSelect={() => onSelectWindow(node.id)}
+        onSelectBuffer={(bufferId) => onSelectBuffer(node.id, bufferId)}
+      />
     );
   }
   return (
@@ -103,15 +142,46 @@ const WindowTree = ({ node, selected, onSelect }: TreeProps) => {
           className="emacs-split-pane"
           style={{ flexGrow: i === 0 ? node.ratio : 1 - node.ratio }}
         >
-          <WindowTree node={child} selected={selected} onSelect={onSelect} />
+          <WindowTree
+            node={child}
+            selected={selected}
+            bufferFor={bufferFor}
+            onSelectWindow={onSelectWindow}
+            onSelectBuffer={onSelectBuffer}
+          />
         </div>
       ))}
     </div>
   );
 };
 
+const initialWorkspace = () => {
+  const hash = typeof window !== 'undefined' ? window.location.hash.slice(1) : '';
+  return WORKSPACES[hash] ? hash : 'main';
+};
+
 export const EmacsFrame = () => {
-  const [selected, setSelected] = useState('code');
+  const [workspace, setWorkspace] = useState(initialWorkspace);
+  const [selectedWin, setSelectedWin] = useState(WORKSPACES[workspace].defaultWindow);
+  const [bufferOverrides, setBufferOverrides] = useState<Record<string, string>>({});
+  const [echo, setEcho] = useState(WORKSPACES[workspace].echo);
+
+  const selectWorkspace = (id: string) => {
+    setWorkspace(id);
+    setSelectedWin(WORKSPACES[id].defaultWindow);
+    setEcho(WORKSPACES[id].echo);
+  };
+
+  const selectWindow = (id: string) => {
+    setSelectedWin(id);
+    setEcho(WINDOW_ECHO[id] ?? '');
+  };
+
+  const selectBuffer = (windowId: string, bufferId: string) => {
+    setBufferOverrides((prev) => ({ ...prev, [windowId]: bufferId }));
+    setSelectedWin(windowId);
+    setEcho(`Switched to buffer ${BUFFERS[bufferId].name}`);
+  };
 
   return (
     <div className="emacs-frame">
@@ -123,11 +193,23 @@ export const EmacsFrame = () => {
         </div>
         <div className="frame-text">NEO Emacs</div>
       </div>
-      <TabBar />
+      <TabBar
+        tabs={Object.entries(WORKSPACES).map(([id, ws]) => ({ id, label: ws.label }))}
+        active={workspace}
+        onSelect={selectWorkspace}
+      />
       <div className="emacs-window-tree">
-        <WindowTree node={FRAME_TREE} selected={selected} onSelect={setSelected} />
+        <div className="workspace ws-fade" key={workspace}>
+          <WindowTree
+            node={WORKSPACES[workspace].tree}
+            selected={selectedWin}
+            bufferFor={(windowId, defaultId) => bufferOverrides[windowId] ?? defaultId}
+            onSelectWindow={selectWindow}
+            onSelectBuffer={selectBuffer}
+          />
+        </div>
       </div>
-      <EchoArea message={ECHO_MESSAGES[selected]} />
+      <EchoArea message={echo} />
     </div>
   );
 };
