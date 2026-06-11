@@ -16,26 +16,26 @@ const EvalApply = () => (
     {/* each lambda rides its comma: wide base in the head bulb,
         narrow apex pointing into the tail */}
     <text
-      x="15.5"
-      y="16.2"
+      x="16"
+      y="18"
       textAnchor="middle"
-      fontSize="12.5"
+      fontSize="16.5"
       fontWeight="bold"
       fill="#0d0d12"
       fontFamily="JetBrains Mono, monospace"
-      transform="rotate(225 15.5 11.5)"
+      transform="rotate(225 16 12)"
     >
       λ
     </text>
     <text
-      x="15.5"
-      y="16.2"
+      x="16"
+      y="18"
       textAnchor="middle"
-      fontSize="12.5"
+      fontSize="16.5"
       fontWeight="bold"
       fill="#0d0d12"
       fontFamily="JetBrains Mono, monospace"
-      transform="rotate(180 20 20) rotate(225 15.5 11.5)"
+      transform="rotate(180 20 20) rotate(225 16 12)"
     >
       λ
     </text>
