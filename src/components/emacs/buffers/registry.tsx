@@ -198,7 +198,7 @@ const fileRow = (
 const elIcon = <span className="nf-el">λ</span>;
 
 const TREE_LINES: ReactNode[] = [
-  dirRow(0, true, '~/neomacs', true),
+  dirRow(0, true, '~/eval-exec/neomacs', true),
   dirRow(1, false, 'admin'),
   dirRow(1, true, 'assets'),
   fileRow(2, <ImageIcon size={13} className="nf-img" />, 'neo-emacs.svg'),

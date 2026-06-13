@@ -19,6 +19,26 @@
   width: 100%;
 }
 
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.header-window-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  flex: 0 0 auto;
+  animation: logo-icon-spin 4s linear infinite;
+}
+
+@keyframes logo-icon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .logo-text {
   font-weight: 700;
   font-size: 1.25rem;

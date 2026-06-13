@@ -118,7 +118,7 @@ const WORKSPACES: Record<string, Workspace> = {
 };
 
 const WINDOW_ECHO: Record<string, string> = {
-  tree: 'Treemacs: workspace ~/neomacs — 8 dirs, 9 files',
+  tree: 'Treemacs: workspace ~/eval-exec/neomacs — 8 dirs, 9 files',
   code: 'NEO Emacs initialized in 0.001s. [Render Engine: wgpu]',
   media: 'Decoding demo.webm on GPU — zero-copy into wgpu texture.',
   webkit: 'WPE WebKit buffer ready — https://neomacs.org',

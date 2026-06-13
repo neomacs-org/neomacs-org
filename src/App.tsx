@@ -34,6 +34,7 @@ const Navbar = () => (
   <nav className="navbar">
     <div className="container nav-content">
       <div className="logo">
+        <img className="header-window-icon" src="/favicon.svg" alt="" aria-hidden="true" />
         <span className="logo-text">NEO Emacs <span className="logo-wip">(WIP)</span></span>
       </div>
       <div className="nav-links">
