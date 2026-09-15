@@ -184,11 +184,14 @@
 }
 
 .secondary-btn {
+  display: inline-flex;
+  align-items: center;
   padding: 0.8rem 2rem;
   background: transparent;
   color: white;
   border: 1px solid var(--glass-border);
   border-radius: 8px;
+  text-decoration: none;
   font-weight: 600;
   cursor: pointer;
 }

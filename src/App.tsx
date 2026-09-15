@@ -98,9 +98,14 @@ const Hero = () => (
         <a href="https://github.com/eval-exec/neomacs" className="primary-btn">
           Get Started <ChevronRight size={18} />
         </a>
-        <button className="secondary-btn">
+        <a
+          href="https://www.youtube.com/@eval-exec"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="secondary-btn"
+        >
           Watch Demo
-        </button>
+        </a>
       </motion.div>
     </div>
     
