@@ -30,6 +30,18 @@ const FeatureCard = ({ icon: Icon, title, description, delay }: any) => (
   </motion.div>
 );
 
+const WipBanner = () => (
+  <div className="wip-banner">
+    <span className="wip-banner-dot" aria-hidden="true" />
+    <span>
+      Neomacs and this site are <strong>works in progress</strong>
+      <span className="wip-banner-extra">
+        {' '}— a WebAssembly build is in development so you can try neomacs in your browser
+      </span>.
+    </span>
+  </div>
+);
+
 const Navbar = () => (
   <nav className="navbar">
     <div className="container nav-content">
@@ -219,6 +231,7 @@ const Sponsors = () => (
 const App = () => {
   return (
     <div className="app">
+      <WipBanner />
       <Navbar />
       <Hero />
       <EmacsPreview />
