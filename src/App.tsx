@@ -47,7 +47,8 @@ const WipBanner = () => (
       target="_blank"
       rel="noopener noreferrer"
     >
-      Try NEO Emacs in your browser <ChevronRight size={16} aria-hidden="true" />
+      <span>Try NEO Emacs WASM build (experimental and incomplete)</span>
+      <ChevronRight size={16} aria-hidden="true" />
     </a>
   </div>
 );
