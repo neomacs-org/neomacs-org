@@ -5,9 +5,10 @@
   right: 0;
   height: var(--wip-banner-height);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.35rem;
   padding: 0 1rem;
   background: linear-gradient(90deg, rgba(255, 77, 77, 0.16), rgba(255, 153, 0, 0.16));
   backdrop-filter: blur(10px);
@@ -19,12 +20,39 @@
   z-index: 1100;
 }
 
+.wip-banner-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wasm-preview-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ffcc66;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wasm-preview-link:hover {
+  color: #ffebc2;
+}
+
+.wasm-preview-link:focus-visible {
+  outline: 2px solid #ffcc66;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
 .wip-banner strong {
   color: var(--accent-color);
   font-weight: 700;
 }
 
-/* Dropped on narrow screens so the banner stays one line, which keeps
+/* Dropped on narrow screens so the status stays one line, which keeps
    --wip-banner-height accurate and the navbar offset correct. */
 .wip-banner-extra {
   color: var(--muted-color);

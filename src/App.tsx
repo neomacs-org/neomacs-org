@@ -32,13 +32,23 @@ const FeatureCard = ({ icon: Icon, title, description, delay }: any) => (
 
 const WipBanner = () => (
   <div className="wip-banner">
-    <span className="wip-banner-dot" aria-hidden="true" />
-    <span>
+    <span className="wip-banner-status">
+      <span className="wip-banner-dot" aria-hidden="true" />
+      <span>
       Neomacs and this site are <strong>works in progress</strong>
       <span className="wip-banner-extra">
         {' '}— a WebAssembly build is in development so you can try neomacs in your browser
       </span>.
+      </span>
     </span>
+    <a
+      className="wasm-preview-link"
+      href="https://eval-exec.github.io/neomacs/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Try NEO Emacs in your browser <ChevronRight size={16} aria-hidden="true" />
+    </a>
   </div>
 );
 
