@@ -47,7 +47,7 @@ const Navbar = () => (
     <div className="container nav-content">
       <div className="logo">
         <img className="header-window-icon" src="/favicon.svg" alt="" aria-hidden="true" />
-        <span className="logo-text">NEO Emacs <span className="logo-wip">(WIP)</span></span>
+        <span className="logo-text">NEO Emacs <span className="logo-wip">Working in progress</span></span>
       </div>
       <div className="nav-links">
         <a href="#features">Features</a>
@@ -71,6 +71,12 @@ const Navbar = () => (
 const Hero = () => (
   <section className="hero">
     <div className="container hero-content">
+      <aside className="wip-notice" aria-labelledby="wip-heading">
+        <div className="wip-notice-copy">
+          <h2 id="wip-heading">Working in progress</h2>
+          <p>NEO Emacs is still in active development. Expect bugs, incomplete features, and breaking changes.</p>
+        </div>
+      </aside>
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -88,7 +94,7 @@ const Hero = () => (
         className="hero-title"
       >
         The <span className="gradient-text">Emacs</span> from <br />
-        the <span className="glow-text">Future</span> <span className="wip-tag">(WIP)</span>
+        the <span className="glow-text">Future</span>
       </motion.h1>
       
       <motion.p 
