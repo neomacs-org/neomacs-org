@@ -4,6 +4,7 @@ import { BUFFERS } from './buffers/registry';
 import { TabBar } from './TabBar';
 import { EmacsWindow } from './EmacsWindow';
 import { EchoArea } from './EchoArea';
+import { WasmIcon } from '../WasmIcon';
 import './emacs.css';
 
 const MAIN_TREE: WindowNode = {
@@ -205,7 +206,18 @@ export const EmacsFrame = () => {
           <span></span>
           <span></span>
         </div>
-        <div className="frame-text">NEO Emacs</div>
+        <div className="frame-text">
+          NEO Emacs is working in progress.{' '}
+          <a
+            href="https://eval-exec.github.io/neomacs/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <WasmIcon size={13} />
+            click here to Try the NEO Emacs's WASM target build
+          </a>{' '}
+          (experimental and incomplete)
+        </div>
       </div>
       <TabBar
         tabs={Object.entries(WORKSPACES).map(([id, ws]) => ({ id, label: ws.label }))}

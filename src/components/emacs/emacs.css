@@ -37,13 +37,38 @@
   background: #333;
 }
 
+/* Carries real content now, not just chrome, so it is lifted well clear of the
+   #666 it was — that sat near 3.4:1 on this bar, under the 4.5:1 small text
+   needs. It also wraps rather than overflowing as a real title never would;
+   the disclosure matters more than the illusion. */
 .frame-text {
   font-size: 0.75rem;
-  color: #666;
+  color: #9a9a9a;
   font-family: 'Inter', sans-serif;
   flex-grow: 1;
   text-align: center;
+  line-height: 1.5;
   margin-right: 60px; /* Offset for center alignment */
+}
+
+.frame-text a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #ff6b6b;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.5);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.frame-text a svg {
+  flex: 0 0 auto;
+}
+
+.frame-text a:hover {
+  color: #ff8080;
+  border-bottom-color: currentColor;
 }
 
 /* Frame-level tab-bar (tab-bar-mode) */
