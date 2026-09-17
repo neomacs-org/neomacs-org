@@ -101,9 +101,12 @@
   min-width: 0;
 }
 
+/* 44px, not larger: the icon spins, so its corners sweep a box of
+   size x sqrt(2). At 48px that is 68px inside a 70px navbar — past it the
+   corners would clip mid-rotation. */
 .header-window-icon {
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   display: block;
   flex: 0 0 auto;
   animation: logo-icon-spin 4s linear infinite;
