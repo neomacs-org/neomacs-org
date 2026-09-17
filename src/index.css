@@ -7,6 +7,7 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --wip-banner-height: 74px;
+  --navbar-height: 70px;
 }
 
 * {
@@ -35,6 +36,14 @@ code, pre {
 
 section {
   padding: 6rem 0;
+}
+
+/* The banner and navbar are fixed, so without this an anchor jump puts the
+   section's heading underneath them. The extra 1rem is breathing room. */
+section[id] {
+  scroll-margin-top: calc(
+    var(--wip-banner-height) + var(--navbar-height) + 1rem
+  );
 }
 
 h1, h2, h3 {

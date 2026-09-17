@@ -10,9 +10,13 @@ import {
   ChevronRight,
   Star,
   Heart,
-  Youtube
+  Youtube,
+  UserRound,
+  UsersRound,
+  UserPlus
 } from 'lucide-react';
 import { EmacsFrame } from './components/emacs/EmacsFrame';
+import sponsorsData from './data/sponsors.json';
 import './App.css';
 
 /* lucide has no WebAssembly glyph, so this is the official mark from
@@ -51,9 +55,9 @@ const WipBanner = () => (
     <span className="wip-banner-status">
       <span className="wip-banner-dot" aria-hidden="true" />
       <span>
-      Neomacs and this site are <strong>works in progress</strong>
+      NEO Emacs and this site are <strong>works in progress</strong>
       <span className="wip-banner-extra">
-        {' '}— a WebAssembly build is in development so you can try neomacs in your browser
+        {' '}— a WebAssembly build is in development so you can try NEO Emacs in your browser
       </span>.
       </span>
     </span>
@@ -237,39 +241,116 @@ const EmacsPreview = () => (
   </section>
 );
 
-const Sponsors = () => (
-  <section id="sponsors" className="sponsors-section">
-    <div className="container">
-      <div className="section-header">
-        <h2>Support the Future</h2>
-        <p>Help us accelerate the Rust core rewrite and GPU engine development.</p>
-      </div>
-      
-      <div className="sponsors-container">
-        <div className="sponsor-cta-card">
-          <div className="cta-icon">
-            <Github size={32} />
-          </div>
-          <h3>Become a Sponsor</h3>
-          <p>Support NEO Emacs directly via GitHub Sponsors. Every contribution helps us develop and maintain the NEO Emacs project for the long term.</p>
-          <a href="https://github.com/sponsors/eval-exec" target="_blank" rel="noopener noreferrer" className="primary-btn">
-            Sponsor on GitHub
+// No tier or amount: sponsor amounts are deliberately not collected, so there
+// is nothing here that could disclose what anyone gives.
+const sponsorInitials = (name: string) =>
+  name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');
+
+/* Sponsors are individuals, not companies, so there are no logos to show.
+   Every well-known project that faces this — Svelte, FastAPI, Astro — does the
+   same thing: a warm sentence, a plain run of linked names, and a quiet link
+   out. No cards, no tiers, no decoration. It also holds up as the list grows,
+   where a sparse grid of tiles only ever advertises how few there are. */
+const Sponsors = () => {
+  const { sample, sponsors, anonymousCount } = sponsorsData;
+
+  return (
+    <section id="sponsors" className="sponsors-section">
+      <div className="container">
+        <div className="section-header">
+          <h2>Support the Future</h2>
+          <p>NEO Emacs is GPL-3.0 licensed and will always be free and open source.</p>
+        </div>
+
+        <div className="sponsor-cards">
+          {sponsors.map((sponsor) => {
+            const duplicatesLogin =
+              sponsor.name.trim().toLowerCase() === sponsor.login.toLowerCase();
+
+            return (
+              <a
+                className="sponsor-card"
+                key={sponsor.login}
+                href={sponsor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`@${sponsor.login}`}
+              >
+                {sponsor.avatarUrl ? (
+                  <img src={sponsor.avatarUrl} alt="" loading="lazy" />
+                ) : (
+                  <span className="sponsor-card-initials" aria-hidden="true">
+                    {sponsorInitials(sponsor.name)}
+                  </span>
+                )}
+                <span className="sponsor-card-name">{sponsor.name}</span>
+                {!duplicatesLogin && (
+                  <span className="sponsor-card-handle">@{sponsor.login}</span>
+                )}
+              </a>
+            );
+          })}
+
+          {/* No profile to visit, so this one is not a link. */}
+          {anonymousCount > 0 && (
+            <span
+              className="sponsor-card sponsor-card-anon"
+              role="img"
+              aria-label={`${anonymousCount} sponsors who chose to stay anonymous`}
+              title={`${anonymousCount} sponsor${anonymousCount === 1 ? '' : 's'} who chose to stay anonymous`}
+            >
+              <span className="sponsor-card-initials" aria-hidden="true">
+                {/* Plural glyph only when it is actually plural. */}
+                {anonymousCount === 1 ? (
+                  <UserRound size={30} />
+                ) : (
+                  <UsersRound size={32} />
+                )}
+              </span>
+              <span className="sponsor-card-name">
+                {anonymousCount} anonymous
+              </span>
+            </span>
+          )}
+
+          <a
+            className="sponsor-card sponsor-card-reserved"
+            href="https://github.com/sponsors/eval-exec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="sponsor-card-initials" aria-hidden="true">
+              <UserPlus size={30} />
+            </span>
+            <span className="sponsor-card-name">Your name here</span>
           </a>
         </div>
-        
-        <div className="sponsors-grid">
-           {/* Placeholder for future sponsors */}
-           <div className="sponsor-placeholder">
-             <span>Your Logo Here</span>
-           </div>
-           <div className="sponsor-placeholder">
-             <span>Your Logo Here</span>
-           </div>
-        </div>
+
+        <a
+          className="sponsors-cta"
+          href="https://github.com/sponsors/eval-exec"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Become a sponsor
+          <ChevronRight size={16} aria-hidden="true" />
+        </a>
+
+        {sample && (
+          <p className="sponsors-sample-note">
+            Placeholder entries — set <code>GH_TOKEN</code> and run{' '}
+            <code>npm run fetch-sponsors</code> to list real sponsors.
+          </p>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const App = () => {
   return (

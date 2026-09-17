@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "fetch-sponsors": "node scripts/fetch-sponsors.mjs",
+    "prebuild": "node scripts/fetch-sponsors.mjs",
     "build": "tsc && vite build",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"

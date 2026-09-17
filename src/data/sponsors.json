@@ -1,0 +1,42 @@
+{
+  "sample": false,
+  "sponsors": [
+    {
+      "login": "yuanw",
+      "name": "Yuan Wang",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/163165?u=055392f7b67fc6569ac1e486d3900152acab1194&v=4",
+      "url": "https://github.com/yuanw"
+    },
+    {
+      "login": "mjburling",
+      "name": "Michael J Burling",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/905175?u=c6a4a93cf911af44bdb15e6cf80f2d92b4f163d7&v=4",
+      "url": "https://github.com/mjburling"
+    },
+    {
+      "login": "jonathanMelly",
+      "name": "Jonathan Melly",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1828512?u=c809a28da1a5f4d790210e79de034aeadafb5584&v=4",
+      "url": "https://github.com/jonathanMelly"
+    },
+    {
+      "login": "egrodri",
+      "name": "Elliott Gordon-Rodriguez",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/24964845?v=4",
+      "url": "https://github.com/egrodri"
+    },
+    {
+      "login": "include-yy",
+      "name": "YUE YI",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46282552?u=1f4a5dccc7013f1b10f6c6b65083d4c98ded1078&v=4",
+      "url": "https://github.com/include-yy"
+    },
+    {
+      "login": "ISouthRain",
+      "name": "ISouthRain",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/65887663?u=9e1a0ba76b3f56e9b84d184d74175f0839a0d9ba&v=4",
+      "url": "https://github.com/ISouthRain"
+    }
+  ],
+  "anonymousCount": 3
+}

@@ -78,7 +78,7 @@
   top: var(--wip-banner-height);
   left: 0;
   right: 0;
-  height: 70px;
+  height: var(--navbar-height);
   display: flex;
   align-items: center;
   background-color: rgba(5, 5, 5, 0.8);
@@ -441,67 +441,175 @@
   border-top: 1px solid var(--glass-border);
 }
 
-.sponsors-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+/* The card is placed explicitly in the middle columns; the sponsor tiles then
+   auto-place, and `dense` backfills the cells left free around it — which is
+   what makes them ring the card instead of forming a second column. The card
+   spans an even number of columns with a free column on each side, so the tiles
+   flank it symmetrically. */
+/* A plain run of names, the way Svelte and FastAPI thank individual sponsors.
+   Nothing is boxed or ranked, so the section reads the same at six sponsors as
+   it will at sixty. */
+.sponsors-section .container {
+  text-align: center;
 }
 
-.sponsor-cta-card {
+.sponsor-names {
+  max-width: 780px;
+  margin: 0 auto;
+  color: var(--muted-color);
+  font-size: 1.05rem;
+  line-height: 2.2;
+}
+
+/* Each sponsor is a card: picture, name below it, in a rounded box. */
+/* Spans the same width as every other section's content — no narrower inset. */
+.sponsor-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 1rem;
+}
+
+.sponsor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  padding: 3rem;
-  border-radius: 24px;
-  position: relative;
-  overflow: hidden;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
 
-.cta-icon {
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
+.sponsor-card:hover {
+  border-color: rgba(255, 77, 77, 0.3);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
 }
 
-.sponsor-cta-card h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+.sponsor-card img,
+.sponsor-card-initials {
+  width: 84px;
+  height: 84px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  transition: border-color 0.2s;
 }
 
-.sponsor-cta-card p {
-  color: var(--muted-color);
-  line-height: 1.6;
-  margin-bottom: 2rem;
+.sponsor-card img {
+  object-fit: cover;
+  display: block;
 }
 
-.sponsors-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.sponsor-placeholder {
-  aspect-ratio: 16/9;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed #333;
-  border-radius: 12px;
-  display: flex;
+.sponsor-card-initials {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #444;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  background: var(--glass-bg);
+  color: var(--muted-color);
+  font-size: 1.35rem;
+  font-weight: 700;
 }
 
-@media (max-width: 968px) {
-  .sponsors-container {
-    grid-template-columns: 1fr;
-  }
+.sponsor-card:hover img,
+.sponsor-card:hover .sponsor-card-initials {
+  border-color: var(--accent-color);
+}
+
+.sponsor-card-name {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.sponsor-card-handle {
+  color: var(--muted-color);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+/* Not a person and not a link: no hover lift, no pointer. */
+.sponsor-card-anon {
+  cursor: default;
+}
+
+.sponsor-card-anon:hover {
+  border-color: var(--glass-border);
+  background: var(--glass-bg);
+  transform: none;
+}
+
+/* The one card meant to be noticed. Amber is already this site's "invitation"
+   colour (the WIP chip, the WASM link), so the slot reads as an open door
+   rather than as another sponsor — amber at rest, not only on hover, plus a
+   slow glow so the eye catches it without the card shouting. */
+.sponsor-card-reserved {
+  border-style: dashed;
+  border-color: rgba(255, 204, 102, 0.55);
+  background: rgba(255, 204, 102, 0.07);
+  animation: reserved-glow 3.5s ease-in-out infinite;
+}
+
+.sponsor-card-reserved .sponsor-card-initials {
+  border-color: rgba(255, 204, 102, 0.45);
+  color: #ffcc66;
+}
+
+.sponsor-card-reserved .sponsor-card-name {
+  color: #ffcc66;
+  font-weight: 700;
+}
+
+.sponsor-card-reserved:hover {
+  border-color: #ffcc66;
+  background: rgba(255, 204, 102, 0.14);
+}
+
+@keyframes reserved-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 102, 0); }
+  50%      { box-shadow: 0 0 20px 0 rgba(255, 204, 102, 0.22); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-card-reserved { animation: none; }
+}
+
+.sponsors-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 2.5rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.sponsors-cta:hover {
+  color: #ff8080;
+  border-bottom-color: currentColor;
+}
+
+.sponsors-sample-note {
+  margin-top: 2rem;
+  color: var(--secondary-color);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: center;
 }
 
 /* Footer */
 .footer {
-  padding: 4rem 0;
+  padding: 4rem 0 9rem;
   border-top: 1px solid var(--glass-border);
   margin-top: 4rem;
 }
