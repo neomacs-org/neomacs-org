@@ -559,9 +559,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centred so cards with less content sit balanced in the equalised height
-     rather than clinging to the top with a gap beneath. */
-  justify-content: center;
+  /* Top-aligned, not centred: centring moved the avatar up or down by however
+     much text that particular card had, so the faces landed on different
+     lines. Anchored top, every avatar and name starts at the same y. */
+  justify-content: flex-start;
   gap: 0.5rem;
   padding: 1.5rem 1rem;
   background: var(--glass-bg);
@@ -616,7 +617,10 @@
   overflow-wrap: anywhere;
 }
 
+/* Pushed to the foot of the card, so handles line up across the row no matter
+   how many lines the name above them took. */
 .sponsor-card-handle {
+  margin-top: auto;
   color: var(--muted-color);
   font-size: 0.75rem;
   line-height: 1.2;
