@@ -13,7 +13,9 @@ import {
   Youtube,
   UserRound,
   UsersRound,
-  UserPlus
+  UserPlus,
+  Download,
+  Scale
 } from 'lucide-react';
 import { EmacsFrame } from './components/emacs/EmacsFrame';
 import { WasmIcon } from './components/WasmIcon';
@@ -249,6 +251,9 @@ const Sponsors = () => {
     <section id="sponsors" className="sponsors-section">
       <div className="container">
         <div className="section-header">
+          <span className="section-icon" aria-hidden="true">
+            <Heart size={26} fill="currentColor" />
+          </span>
           <h2>
             Support the <span className="heading-accent">Future</span>
           </h2>
@@ -365,12 +370,54 @@ const App = () => {
       <Sponsors />
       
       <footer className="footer">
-        <div className="container footer-content">
-          <div className="footer-logo">NEO Emacs</div>
-          <p>© 2026 Neomacs Project. Built for the modern age.</p>
-          <div className="social-links">
-            <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer"><Github size={20} /></a>
+        <div className="container footer-grid">
+          <div className="footer-brand">
+            <img className="footer-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+            <div>
+              <div className="footer-logo">NEO Emacs</div>
+              <p className="footer-tagline">
+                GPU-powered Emacs, rewritten in Rust. Work in progress.
+              </p>
+            </div>
           </div>
+
+          {/* Only destinations that exist. A footer of 404s reads as an
+              abandoned project, which is the opposite of the point. */}
+          <nav className="footer-col" aria-labelledby="footer-get">
+            <h3 id="footer-get">Get started</h3>
+            <a href="https://github.com/eval-exec/neomacs/releases" target="_blank" rel="noopener noreferrer">
+              <Download size={15} aria-hidden="true" />
+              Download
+            </a>
+            <a href="https://eval-exec.github.io/neomacs/" target="_blank" rel="noopener noreferrer">
+              <span className="icon-wasm"><WasmIcon size={15} /></span>
+              Try the WASM build
+            </a>
+            <a href="https://www.youtube.com/@eval-exec" target="_blank" rel="noopener noreferrer">
+              <Youtube size={15} className="icon-youtube" aria-hidden="true" />
+              Watch demo
+            </a>
+          </nav>
+
+          <nav className="footer-col" aria-labelledby="footer-project">
+            <h3 id="footer-project">Project</h3>
+            <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer">
+              <Github size={15} className="icon-github" aria-hidden="true" />
+              Source code
+            </a>
+            <a href="https://github.com/eval-exec/neomacs?tab=GPL-3.0-1-ov-file" target="_blank" rel="noopener noreferrer">
+              <Scale size={15} aria-hidden="true" />
+              Licence (GPL-3.0)
+            </a>
+            <a href="https://github.com/sponsors/eval-exec" target="_blank" rel="noopener noreferrer">
+              <Heart size={15} className="icon-sponsor" aria-hidden="true" />
+              Sponsor on GitHub
+            </a>
+          </nav>
+        </div>
+
+        <div className="container footer-bottom">
+          <p>© 2026 NEO Emacs · GPL-3.0 licensed</p>
         </div>
       </footer>
     </div>
