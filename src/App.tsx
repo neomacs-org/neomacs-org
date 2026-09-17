@@ -78,7 +78,6 @@ const Navbar = () => (
       </div>
       <div className="nav-links">
         <a href="#features">Features</a>
-        <a href="#performance">Performance</a>
         <a href="https://github.com/eval-exec/neomacs" target="_blank" rel="noopener noreferrer" className="github-btn">
           <div className="btn-item">
             <Star size={14} fill="currentColor" />
