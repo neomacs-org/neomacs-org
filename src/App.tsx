@@ -249,9 +249,34 @@ const Sponsors = () => {
     <section id="sponsors" className="sponsors-section">
       <div className="container">
         <div className="section-header">
-          <h2>Support the Future</h2>
-          <p>NEO Emacs is GPL-3.0 licensed and will always be free and open source.</p>
+          <h2>
+            Support the <span className="heading-accent">Future</span>
+          </h2>
+          <p>
+            <span className="licence-brand">NEO Emacs</span> is{' '}
+            <a
+              className="licence-badge"
+              href="https://github.com/eval-exec/neomacs?tab=GPL-3.0-1-ov-file"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Read the licence"
+            >
+              GPL-3.0
+            </a>{' '}
+            licensed and will always be <strong className="licence-emph">free</strong> and{' '}
+            <strong className="licence-emph">open source</strong>.
+          </p>
         </div>
+
+        <a
+          className="primary-btn sponsors-cta"
+          href="https://github.com/sponsors/eval-exec"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Become a Sponsor
+          <ChevronRight size={16} aria-hidden="true" />
+        </a>
 
         <div className="sponsor-cards">
           {sponsors.map((sponsor) => {
@@ -299,7 +324,8 @@ const Sponsors = () => {
                 )}
               </span>
               <span className="sponsor-card-name">
-                {anonymousCount} anonymous
+                {anonymousCount} Anonymous{' '}
+                {anonymousCount === 1 ? 'Sponsor' : 'Sponsors'}
               </span>
             </span>
           )}
@@ -316,16 +342,6 @@ const Sponsors = () => {
             <span className="sponsor-card-name">Your name here</span>
           </a>
         </div>
-
-        <a
-          className="sponsors-cta"
-          href="https://github.com/sponsors/eval-exec"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Become a sponsor
-          <ChevronRight size={16} aria-hidden="true" />
-        </a>
 
         {sample && (
           <p className="sponsors-sample-note">

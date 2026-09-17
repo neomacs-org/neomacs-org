@@ -266,8 +266,11 @@
   justify-content: center;
 }
 
+/* inline-flex rather than flex so the button also works outside a flex row —
+   in a flex container a child is blockified either way, so the hero is
+   unaffected. */
 .primary-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 2rem;
@@ -456,6 +459,66 @@
   text-align: center;
 }
 
+/* "Future" is the word the hero already lands on, so the closing section picks
+   up the same idea in the same gradient. drop-shadow rather than text-shadow:
+   the fill is transparent, and a text-shadow would draw behind it as a hard
+   duplicate instead of a glow. */
+.heading-accent {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent-color); /* fallback if background-clip is unsupported */
+  filter: drop-shadow(0 0 18px rgba(255, 77, 77, 0.35));
+}
+
+/* The licence reads as a badge rather than as another inline link, because it
+   is a fact worth checking, not a place to go next. Monospace ties it to the
+   code-block styling elsewhere on the page. */
+.licence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.55em;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-color);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  vertical-align: baseline;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.licence-badge:hover,
+.licence-badge:focus-visible {
+  color: var(--accent-color);
+  border-color: rgba(255, 77, 77, 0.55);
+  background: rgba(255, 77, 77, 0.1);
+  box-shadow: 0 0 14px rgba(255, 77, 77, 0.22);
+}
+
+/* Plain white and heavy rather than a third decorative treatment: it is the
+   subject of the sentence, and the gradient already marks the two promises. */
+.licence-brand {
+  color: var(--text-color);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* Reuses the hero title's gradient so the two promises read as the page's own
+   emphasis rather than a new colour invented for this one line. */
+.licence-emph {
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent-color); /* fallback if background-clip is unsupported */
+}
+
 .sponsor-names {
   max-width: 780px;
   margin: 0 auto;
@@ -469,6 +532,10 @@
 .sponsor-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  /* 1fr rows make every row as tall as the tallest card. Without it a two-line
+     name stretches only its own row, so the anonymous and reserved cards —
+     which carry no handle — sat 41px shorter than the rest. */
+  grid-auto-rows: 1fr;
   gap: 1rem;
 }
 
@@ -476,6 +543,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Centred so cards with less content sit balanced in the equalised height
+     rather than clinging to the top with a gap beneath. */
+  justify-content: center;
   gap: 0.5rem;
   padding: 1.5rem 1rem;
   background: var(--glass-bg);
@@ -553,53 +623,106 @@
    rather than as another sponsor — amber at rest, not only on hover, plus a
    slow glow so the eye catches it without the card shouting. */
 .sponsor-card-reserved {
-  border-style: dashed;
-  border-color: rgba(255, 204, 102, 0.55);
-  background: rgba(255, 204, 102, 0.07);
+  position: relative;
+  overflow: hidden;
+  border-style: solid;
+  border-color: rgba(255, 204, 102, 0.7);
+  background:
+    linear-gradient(180deg, rgba(255, 204, 102, 0.14), rgba(255, 204, 102, 0.04));
   animation: reserved-glow 3.5s ease-in-out infinite;
 }
 
+/* A slow highlight travelling across the card — the thing that actually reads
+   as "available" rather than merely "differently coloured". */
+.sponsor-card-reserved::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 235, 194, 0.22) 50%,
+    transparent 65%
+  );
+  background-size: 260% 100%;
+  animation: reserved-shine 3.5s ease-in-out infinite;
+}
+
 .sponsor-card-reserved .sponsor-card-initials {
-  border-color: rgba(255, 204, 102, 0.45);
+  position: relative;
+  border-color: rgba(255, 204, 102, 0.7);
   color: #ffcc66;
+  box-shadow: 0 0 18px rgba(255, 204, 102, 0.25);
+}
+
+/* A ring that keeps expanding out of the circle and fading. This is the part
+   that catches the eye in peripheral vision — a pulse only brightens, whereas
+   something that grows reads as an event and pulls attention across the page. */
+.sponsor-card-reserved .sponsor-card-initials::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 204, 102, 0.65);
+  animation: reserved-ping 3.5s ease-out infinite;
+}
+
+/* Very small: enough to look alive, not enough to shift the layout. */
+.sponsor-card-reserved .sponsor-card-initials svg {
+  animation: reserved-float 3.5s ease-in-out infinite;
 }
 
 .sponsor-card-reserved .sponsor-card-name {
   color: #ffcc66;
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .sponsor-card-reserved:hover {
   border-color: #ffcc66;
-  background: rgba(255, 204, 102, 0.14);
+  background: linear-gradient(180deg, rgba(255, 204, 102, 0.2), rgba(255, 204, 102, 0.08));
+}
+
+.sponsor-card-reserved:hover .sponsor-card-initials {
+  box-shadow: 0 0 26px rgba(255, 204, 102, 0.45);
 }
 
 @keyframes reserved-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 102, 0); }
-  50%      { box-shadow: 0 0 20px 0 rgba(255, 204, 102, 0.22); }
+  50%      { box-shadow: 0 0 24px 0 rgba(255, 204, 102, 0.28); }
 }
 
+@keyframes reserved-shine {
+  0%        { background-position: 160% 0; }
+  55%, 100% { background-position: -60% 0; }
+}
+
+@keyframes reserved-ping {
+  0%        { transform: scale(1);    opacity: 0.75; }
+  70%, 100% { transform: scale(1.45); opacity: 0; }
+}
+
+@keyframes reserved-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+/* All four run on the same 3.5s cycle, so they read as one slow breath rather
+   than as several things competing. */
 @media (prefers-reduced-motion: reduce) {
-  .sponsor-card-reserved { animation: none; }
+  .sponsor-card-reserved,
+  .sponsor-card-reserved::after,
+  .sponsor-card-reserved .sponsor-card-initials::after,
+  .sponsor-card-reserved .sponsor-card-initials svg { animation: none; }
 }
 
+/* Carries .primary-btn too, so the ask looks like the same action as the
+   hero's rather than a third link style on the page. Sits above the cards, so
+   the space it needs is below it. */
 .sponsors-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 2.5rem;
-  color: var(--accent-color);
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.sponsors-cta:hover {
-  color: #ff8080;
-  border-bottom-color: currentColor;
+  margin-bottom: 2.5rem;
 }
 
 .sponsors-sample-note {
