@@ -207,7 +207,7 @@ export const EmacsFrame = () => {
           <span></span>
         </div>
         <div className="frame-text">
-          NEO Emacs is working in progress.{' '}
+          NEO Emacs is under development.{' '}
           <a
             href="https://eval-exec.github.io/neomacs/"
             target="_blank"

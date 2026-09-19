@@ -66,7 +66,7 @@ const Navbar = () => (
     <div className="container nav-content">
       <div className="logo">
         <img className="header-window-icon" src="/favicon.svg" alt="" aria-hidden="true" />
-        <span className="logo-text">NEO Emacs <span className="logo-wip">Working in progress</span></span>
+        <span className="logo-text">NEO Emacs <span className="logo-wip">Work in progress</span></span>
       </div>
       <div className="nav-links">
         <a href="#features">Features</a>
@@ -91,7 +91,7 @@ const Hero = () => (
     <div className="container hero-content">
       <aside className="wip-notice" aria-labelledby="wip-heading">
         <div className="wip-notice-copy">
-          <h2 id="wip-heading">Working in progress</h2>
+          <h2 id="wip-heading">Work in progress</h2>
           <p>NEO Emacs is still in active development. Expect bugs, incomplete features, and breaking changes.</p>
         </div>
       </aside>
