@@ -30,13 +30,19 @@ import { dirname, join } from 'node:path';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outFile = join(root, 'src', 'data', 'sponsors.json');
 
+// In a build, a missing or bad token must never break anything — the committed
+// file is a perfectly good fallback. In the scheduled refresh it is the whole
+// job, so a silent no-op would look identical to "no new sponsors" and could
+// go unnoticed for months. --strict turns those into a visible failure.
+const strict = process.argv.includes('--strict');
+
 const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
 // Overridable so the pagination and privacy logic can be tested against a stub.
 const endpoint = process.env.GITHUB_GRAPHQL_URL || 'https://api.github.com/graphql';
 
 if (!token) {
   console.warn('[sponsors] GH_TOKEN unset — keeping the existing sponsors.json');
-  process.exit(0);
+  process.exit(strict ? 1 : 0);
 }
 
 // Asks only for identity of sponsors who are already public. `tier` is
@@ -150,7 +156,7 @@ try {
   // Never fail a build over the sponsors strip — the section degrades to its CTA.
   console.warn(`[sponsors] fetch failed: ${err.message}`);
   console.warn('[sponsors] keeping the existing sponsors.json');
-  process.exit(0);
+  process.exit(strict ? 1 : 0);
 }
 
 // A valid token can legitimately return nothing — the wrong account, a token
@@ -162,7 +168,9 @@ if (sponsors.length === 0 && anonymousCount === 0) {
     console.warn(`[sponsors] fetch returned no sponsors, but sponsors.json lists ${previous}.`);
     console.warn('[sponsors] Keeping the existing file. If your sponsors really have all');
     console.warn('[sponsors] gone, delete src/data/sponsors.json and run this again.');
-    process.exit(0);
+    // The likeliest cause is a token for the wrong account, which is exactly
+    // what a scheduled run needs to shout about rather than swallow.
+    process.exit(strict ? 1 : 0);
   }
 }
 

@@ -1,0 +1,53 @@
+name: Update sponsors
+
+on:
+  schedule:
+    # Every 5 minutes — GitHub's minimum. Note it is a floor, not a promise:
+    # scheduled runs are queued and routinely delayed under load, and */5
+    # forces the round minutes, which are the most contended. Expect drift.
+    - cron: '*/5 * * * *'
+  # Lets you run it by hand the moment a sponsor signs up, and makes the whole
+  # thing testable without waiting a day.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # SPONSORS_TOKEN must be a PAT owned by eval-exec, NOT secrets.GITHUB_TOKEN.
+      # The API is queried through `viewer`, which resolves to whoever owns the
+      # token — and the built-in token belongs to github-actions[bot], which has
+      # no sponsorships. A bot token would return zero and commit nothing,
+      # silently, every day.
+      #
+      # --strict makes a missing, expired or wrong-account token fail this job
+      # loudly. Under a plain build the same failure is swallowed by design so
+      # it can never break a deploy; here the refresh IS the job.
+      - name: Fetch sponsors
+        env:
+          GH_TOKEN: ${{ secrets.SPONSORS_TOKEN }}
+        run: node scripts/fetch-sponsors.mjs --strict
+
+      # Committing only on a real change keeps the history clean and avoids
+      # firing Cloudflare's build for nothing. Pushing here does trigger the
+      # deploy, because Cloudflare watches the repo rather than Actions.
+      - name: Commit if the list actually changed
+        run: |
+          if git diff --quiet -- src/data/sponsors.json; then
+            echo "No change in sponsors — nothing to commit."
+            exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/data/sponsors.json
+          git commit -m 'Update sponsor data'
+          git push
