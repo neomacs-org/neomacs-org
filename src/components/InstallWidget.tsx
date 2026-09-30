@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Copy, Check, Terminal, ExternalLink } from 'lucide-react';
 import { WasmIcon } from './WasmIcon';
 
-type InstallTab = 'curl' | 'nix' | 'cargo' | 'wasm';
+type InstallTab = 'curl' | 'nix' | 'wasm';
 
 export const InstallWidget = () => {
   const [activeTab, setActiveTab] = useState<InstallTab>('curl');
@@ -25,7 +25,6 @@ export const InstallWidget = () => {
   const commands: Record<InstallTab, string> = {
     curl: 'curl -fsSL https://neomacs.org/install.sh | bash',
     nix: 'nix run github:eval-exec/neomacs',
-    cargo: 'cargo install --git https://github.com/eval-exec/neomacs neomacs-bin',
     wasm: 'https://eval-exec.github.io/neomacs/',
   };
 
@@ -66,14 +65,6 @@ export const InstallWidget = () => {
             onClick={() => setActiveTab('nix')}
           >
             nix flake
-          </button>
-          <button
-            role="tab"
-            aria-selected={activeTab === 'cargo'}
-            className={`tab-dense ${activeTab === 'cargo' ? 'active' : ''}`}
-            onClick={() => setActiveTab('cargo')}
-          >
-            cargo
           </button>
           <button
             role="tab"
