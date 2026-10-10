@@ -239,13 +239,49 @@ const sponsorInitials = (name: string) =>
     .map((part) => part[0]?.toUpperCase() ?? '')
     .join('');
 
-/* Sponsors are individuals, not companies, so there are no logos to show.
-   Every well-known project that faces this — Svelte, FastAPI, Astro — does the
-   same thing: a warm sentence, a plain run of linked names, and a quiet link
-   out. No cards, no tiers, no decoration. It also holds up as the list grows,
-   where a sparse grid of tiles only ever advertises how few there are. */
+/* Sponsors are individuals, not companies, so there are no logos to show —
+   just faces and names. No tiers and no amounts: nothing here could disclose
+   what anyone gives. Past sponsors keep the same card, rendered smaller, so
+   the current wall stays the loud one. */
+type Sponsor = {
+  login: string;
+  name: string;
+  avatarUrl: string;
+  url: string;
+};
+
+const SponsorCard = ({ sponsor, past = false }: { sponsor: Sponsor; past?: boolean }) => {
+  const duplicatesLogin =
+    sponsor.name.trim().toLowerCase() === sponsor.login.toLowerCase();
+
+  return (
+    <a
+      className={past ? 'sponsor-card sponsor-card-past' : 'sponsor-card'}
+      href={sponsor.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`@${sponsor.login}`}
+    >
+      {sponsor.avatarUrl ? (
+        <img src={sponsor.avatarUrl} alt="" loading="lazy" />
+      ) : (
+        <span className="sponsor-card-initials" aria-hidden="true">
+          {sponsorInitials(sponsor.name)}
+        </span>
+      )}
+      <span className="sponsor-card-name">{sponsor.name}</span>
+      {!duplicatesLogin && (
+        <span className="sponsor-card-handle">@{sponsor.login}</span>
+      )}
+    </a>
+  );
+};
+
 const Sponsors = () => {
   const { sample, sponsors, anonymousCount } = sponsorsData;
+  // A JSON file committed before past sponsors existed must not white-page the
+  // dev server — `vite dev` never runs tsc — so read it defensively.
+  const pastSponsors = (sponsorsData as { pastSponsors?: Sponsor[] }).pastSponsors ?? [];
 
   return (
     <section id="sponsors" className="sponsors-section">
@@ -284,33 +320,9 @@ const Sponsors = () => {
         </a>
 
         <div className="sponsor-cards">
-          {sponsors.map((sponsor) => {
-            const duplicatesLogin =
-              sponsor.name.trim().toLowerCase() === sponsor.login.toLowerCase();
-
-            return (
-              <a
-                className="sponsor-card"
-                key={sponsor.login}
-                href={sponsor.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`@${sponsor.login}`}
-              >
-                {sponsor.avatarUrl ? (
-                  <img src={sponsor.avatarUrl} alt="" loading="lazy" />
-                ) : (
-                  <span className="sponsor-card-initials" aria-hidden="true">
-                    {sponsorInitials(sponsor.name)}
-                  </span>
-                )}
-                <span className="sponsor-card-name">{sponsor.name}</span>
-                {!duplicatesLogin && (
-                  <span className="sponsor-card-handle">@{sponsor.login}</span>
-                )}
-              </a>
-            );
-          })}
+          {sponsors.map((sponsor) => (
+            <SponsorCard key={sponsor.login} sponsor={sponsor} />
+          ))}
 
           {/* No profile to visit, so this one is not a link. */}
           {anonymousCount > 0 && (
@@ -347,6 +359,19 @@ const Sponsors = () => {
             <span className="sponsor-card-name">Your name here</span>
           </a>
         </div>
+
+        {/* The current sponsors above are the ask; this is the thank-you — so
+            it sits below them, smaller and without a card of its own. */}
+        {pastSponsors.length > 0 && (
+          <div className="sponsors-past">
+            <h3 className="sponsors-past-heading">Past sponsors</h3>
+            <div className="sponsor-cards sponsor-cards-past">
+              {pastSponsors.map((sponsor) => (
+                <SponsorCard key={sponsor.login.toLowerCase()} sponsor={sponsor} past />
+              ))}
+            </div>
+          </div>
+        )}
 
         {sample && (
           <p className="sponsors-sample-note">

@@ -709,6 +709,68 @@
   box-shadow: 0 0 26px rgba(255, 204, 102, 0.45);
 }
 
+/* Past sponsors: the same card at a lower volume. They were thanked when they
+   were current, so nothing is dimmed to grey — only the scale and the grid
+   change. */
+.sponsors-past {
+  margin-top: 3rem;
+}
+
+.sponsors-past-heading {
+  margin-bottom: 1.25rem;
+  color: var(--muted-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Full container width, like the current wall above, but the tiles pack from
+   the left rather than spreading across the row. auto-fill (not auto-fit) is
+   what does it: the empty tracks at the end of the row are kept, so the cards
+   stay their own size instead of being stretched to fill the width. Declared
+   after .sponsor-cards on purpose: same specificity, so this rule has to come
+   later in the file to win. */
+.sponsor-cards-past {
+  grid-template-columns: repeat(auto-fill, 140px);
+  gap: 0.65rem;
+}
+
+.sponsor-card-past {
+  gap: 0.4rem;
+  padding: 0.85rem 0.6rem;
+  border-radius: 12px;
+}
+
+/* 44px against the main cards' 84px — small enough to read as secondary. The
+   initials fallback needs its own font size: the base 1.35rem is tuned to the
+   big circle and looks cramped here. */
+.sponsor-card-past img,
+.sponsor-card-past .sponsor-card-initials {
+  width: 44px;
+  height: 44px;
+}
+
+.sponsor-card-past .sponsor-card-initials {
+  font-size: 0.95rem;
+}
+
+.sponsor-card-past .sponsor-card-name {
+  color: var(--muted-color);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* One step below the name: at this scale the base 0.75rem handle would be the
+   same size as the name it sits under. */
+.sponsor-card-past .sponsor-card-handle {
+  font-size: 0.68rem;
+}
+
+/* Hover brings the name back to full voice, so a past card feels alive rather
+   than disabled. */
+.sponsor-card-past:hover .sponsor-card-name {
+  color: var(--text-color);
+}
+
 @keyframes reserved-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 102, 0); }
   50%      { box-shadow: 0 0 24px 0 rgba(255, 204, 102, 0.28); }

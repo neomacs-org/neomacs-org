@@ -38,5 +38,43 @@
       "url": "https://github.com/Dsivs"
     }
   ],
-  "anonymousCount": 3
+  "anonymousCount": 3,
+  "pastSponsors": [
+    {
+      "login": "yibie",
+      "name": "yibie",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/365484?v=4",
+      "url": "https://github.com/yibie"
+    },
+    {
+      "login": "mowind",
+      "name": "mowind",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/2201590?v=4",
+      "url": "https://github.com/mowind"
+    },
+    {
+      "login": "bluzky",
+      "name": "Dung Nguyen",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/6194779?u=85c4745d11abfedf3423b8dc7dfe1f960dd13ab3&v=4",
+      "url": "https://github.com/bluzky"
+    },
+    {
+      "login": "milanglacier",
+      "name": "milanglacier",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/45728125?v=4",
+      "url": "https://github.com/milanglacier"
+    },
+    {
+      "login": "include-yy",
+      "name": "YUE YI",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/46282552?u=1f4a5dccc7013f1b10f6c6b65083d4c98ded1078&v=4",
+      "url": "https://github.com/include-yy"
+    },
+    {
+      "login": "WaytrueDeng",
+      "name": "WaytrueDeng",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/61548208?v=4",
+      "url": "https://github.com/WaytrueDeng"
+    }
+  ]
 }
