@@ -1,7 +1,7 @@
 #!/bin/sh
-# NEO Emacs installer entry point — https://neomacs.org/install.sh
+# NEO Emacs installer entry point — https://neomacs.com/install.sh
 #
-#   curl -fsSL https://neomacs.org/install.sh | bash
+#   curl -fsSL https://neomacs.com/install.sh | bash
 #
 # This file is deliberately tiny and stable: it should almost never change.
 # ALL install logic is maintained in the neomacs repository and published as
@@ -12,7 +12,7 @@
 #   https://github.com/eval-exec/neomacs/blob/main/install.sh
 #
 # To review the installer before running it:
-#   curl -fsSL https://neomacs.org/install.sh -o install-entry.sh   # this file
+#   curl -fsSL https://neomacs.com/install.sh -o install-entry.sh   # this file
 #   curl -fsSL https://github.com/eval-exec/neomacs/releases/latest/download/install.sh
 set -eu
 

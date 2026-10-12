@@ -24,7 +24,7 @@ const INIT_LINES: ReactNode[] = [
   <>&nbsp;</>,
   <span className="code-comment">;; Rich buffers: video + WebKit</span>,
   <>(neomacs-play-video <span className="code-string">"demo.webm"</span>)</>,
-  <>(neomacs-webkit-browse <span className="code-string">"https://neomacs.org"</span>)</>,
+  <>(neomacs-webkit-browse <span className="code-string">"https://neomacs.com"</span>)</>,
   <>&nbsp;</>,
   <span className="code-comment">;; Multi-threaded elisp core</span>,
   <>(<span className="code-keyword">setq</span> neomacs-elisp-threads <span className="code-number">8</span>)</>,
@@ -284,11 +284,11 @@ export const BUFFERS: Record<string, BufferDef> = {
   },
   'webkit-home': {
     kind: 'webkit',
-    name: 'neomacs.org',
+    name: 'neomacs.com',
     mode: 'WebKit',
     tag: 'U:%%-',
     pos: '(All)',
-    url: 'https://neomacs.org',
+    url: 'https://neomacs.com',
     page: 'home',
   },
   'webkit-docs': {
@@ -297,7 +297,7 @@ export const BUFFERS: Record<string, BufferDef> = {
     mode: 'WebKit',
     tag: 'U:%%-',
     pos: '(Top)',
-    url: 'https://neomacs.org/docs',
+    url: 'https://neomacs.com/docs',
     page: 'docs',
   },
   'mail-inbox': {
