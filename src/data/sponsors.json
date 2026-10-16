@@ -20,12 +20,6 @@
       "url": "https://github.com/mjburling"
     },
     {
-      "login": "jonathanMelly",
-      "name": "Jonathan Melly",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/1828512?u=c809a28da1a5f4d790210e79de034aeadafb5584&v=4",
-      "url": "https://github.com/jonathanMelly"
-    },
-    {
       "login": "braineo",
       "name": "Binbin",
       "avatarUrl": "https://avatars.githubusercontent.com/u/3591338?u=0316d17aa74d0ca9e07e5f6e61a3d603fc3423b0&v=4",
@@ -57,6 +51,12 @@
       "name": "yibie",
       "avatarUrl": "https://avatars.githubusercontent.com/u/365484?v=4",
       "url": "https://github.com/yibie"
+    },
+    {
+      "login": "jonathanMelly",
+      "name": "Jonathan Melly",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/1828512?u=c809a28da1a5f4d790210e79de034aeadafb5584&v=4",
+      "url": "https://github.com/jonathanMelly"
     },
     {
       "login": "mowind",
