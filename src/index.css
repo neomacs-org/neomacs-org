@@ -1,28 +1,32 @@
 :root {
-  /* Obsidian & Minimalist Metal Palette (Ghostty / Zed / Linear Engineering style) */
-  --bg-color: #000000;
-  --bg-surface: #050507;
-  --bg-secondary: #0a0a0c;
-  --bg-card: #0d0d10;
-  --bg-card-hover: #141418;
-  --text-color: #f4f4f6;
-  --text-dim: #9ea0a8;
-  --muted-color: #5d6069;
-  --border-subtle: #17181c;
-  --border-muted: #23252b;
-  --border-active: #38bdf8;
-  --accent-color: #38bdf8;
-  --accent-cyan: #38bdf8;
-  --secondary-color: #f59e0b;
-  --accent-orange: #f59e0b;
-  --accent-red: #f43f5e;
-  --accent-purple: #c084fc;
-  --accent-green: #10b981;
-  --glass-bg: rgba(10, 10, 14, 0.88);
-  --glass-border: #1f2127;
-  --glass-border-hover: rgba(56, 189, 248, 0.5);
-  --glow-cyan: rgba(56, 189, 248, 0.12);
-  --glow-orange: rgba(245, 158, 11, 0.12);
+  /* Banner-aligned palette: ink surfaces, gold as the primary action colour,
+     plum/lavender as the supporting brand hue, one success/danger value each. */
+  --bg-color: #060409;
+  --bg-surface: #0b0812;
+  --bg-secondary: #100c18;
+  --bg-card: #12101a;
+  --bg-card-hover: #181424;
+
+  --text-color: #f5f1fb;
+  --text-dim: #c3bad6;
+  --muted-color: #948aa8;
+
+  --border-subtle: #241f33;
+  --border-muted: #2a2240;
+  --border-active: #a79ecb;
+
+  --accent-gold: #ffc95c;
+  --accent-gold-deep: #ff8c1a;
+  --accent-gold-solid: #ffa53d;
+  --accent-lavender: #a79ecb;
+  --accent-purple: #7e55b3;
+  --success-color: #5cc9a0;
+  --danger-color: #f2545b;
+
+  --glass-bg: rgba(12, 8, 18, 0.88);
+  --glass-border: var(--border-subtle);
+  --glass-border-hover: rgba(255, 201, 92, 0.45);
+  --glow-gold: rgba(255, 165, 61, 0.14);
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 6px;
@@ -82,22 +86,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .glow-text {
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  text-shadow: 0 0 20px rgba(255, 201, 92, 0.35);
 }
 
 .glow-text-orange {
   color: #ffffff;
-  text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+  text-shadow: 0 0 20px rgba(255, 140, 26, 0.4);
 }
 
 .gradient-text {
-  background: linear-gradient(180deg, #ffffff 30%, #a1a1aa 100%);
+  background: linear-gradient(180deg, #ffffff 30%, #c3bad6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-cyan {
-  background: linear-gradient(135deg, #ffffff 20%, var(--accent-cyan) 100%);
+  background: linear-gradient(135deg, #ffffff 20%, var(--accent-gold-solid) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -109,14 +113,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--bg-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #23252b;
+  background: var(--border-muted);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #38bdf8;
+  background: var(--accent-gold-solid);
 }

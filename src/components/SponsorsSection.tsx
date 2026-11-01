@@ -17,9 +17,6 @@ type Sponsor = {
 };
 
 const SponsorCardDense = ({ sponsor, past = false }: { sponsor: Sponsor; past?: boolean }) => {
-  const duplicatesLogin =
-    sponsor.name.trim().toLowerCase() === sponsor.login.toLowerCase();
-
   return (
     <a
       className={past ? 'sponsor-card-dense sponsor-card-past-dense' : 'sponsor-card-dense'}
@@ -44,9 +41,7 @@ const SponsorCardDense = ({ sponsor, past = false }: { sponsor: Sponsor; past?: 
       </div>
       <div className="sponsor-meta-dense">
         <span className="meta-name">{sponsor.name}</span>
-        {!duplicatesLogin && (
-          <span className="meta-login">@{sponsor.login}</span>
-        )}
+        <span className="meta-login">@{sponsor.login}</span>
       </div>
     </a>
   );
@@ -66,9 +61,9 @@ export const SponsorsSection = () => {
             <span className="mono-idx">[05]</span>
             <span className="mono-title">NEO_EMACS_SPONSORS</span>
           </div>
-          <h2>Free Software.</h2>
+          <h2>Support the Future</h2>
           <p className="section-sub-dense">
-            NEO Emacs is licensed under{' '}
+            NEO Emacs is{' '}
             <a
               className="licence-badge-dense"
               href="https://github.com/eval-exec/neomacs?tab=GPL-3.0-1-ov-file"
@@ -78,8 +73,8 @@ export const SponsorsSection = () => {
             >
               <Scale size={11} aria-hidden="true" />
               GPL-3.0
-            </a>
-            , the same licence as GNU Emacs.
+            </a>{' '}
+            licensed and will always be free and open source.
           </p>
         </div>
 
@@ -107,7 +102,7 @@ export const SponsorsSection = () => {
               title={`${anonymousCount} anonymous supporters`}
             >
               <div className="sponsor-avatar-dense anon-glyph">
-                {anonymousCount === 1 ? <UserRound size={18} /> : <UsersRound size={18} />}
+                {anonymousCount === 1 ? <UserRound size={26} /> : <UsersRound size={28} />}
               </div>
               <div className="sponsor-meta-dense">
                 <span className="meta-name">{anonymousCount} Anonymous Supporters</span>
@@ -123,7 +118,7 @@ export const SponsorsSection = () => {
             rel="noopener noreferrer"
           >
             <div className="sponsor-avatar-dense join-glyph">
-              <UserPlus size={16} />
+              <UserPlus size={24} />
             </div>
             <div className="sponsor-meta-dense">
               <span className="meta-name join-text">Become a Sponsor</span>
