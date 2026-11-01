@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   ChevronRight,
   Youtube,
+  Heart,
   AlertTriangle,
 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
@@ -123,6 +124,16 @@ const HeroCockpit = ({
           >
             <Youtube size={14} className="ico-yt" aria-hidden="true" />
             <span>Watch Demo</span>
+          </a>
+
+          <a
+            href="https://github.com/sponsors/eval-exec"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-dense btn-sponsor"
+          >
+            <Heart size={14} fill="currentColor" aria-hidden="true" />
+            <span>Sponsor</span>
           </a>
         </div>
 

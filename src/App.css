@@ -192,6 +192,18 @@
   color: #ffffff;
 }
 
+.header-sponsor-btn {
+  background: rgba(126, 85, 179, 0.16);
+  border-color: rgba(126, 85, 179, 0.4);
+  color: #e6def5;
+}
+
+.header-sponsor-btn:hover {
+  background: rgba(126, 85, 179, 0.26);
+  border-color: var(--accent-purple);
+  color: #ffffff;
+}
+
 .mobile-toggle-btn {
   display: none;
   background: transparent;
@@ -472,6 +484,18 @@
 
 .btn-primary:hover {
   background: rgba(126, 85, 179, 0.24);
+  border-color: var(--accent-purple);
+  color: #ffffff;
+}
+
+.btn-sponsor {
+  background: rgba(126, 85, 179, 0.22);
+  border: 1px solid rgba(126, 85, 179, 0.5);
+  color: #e6def5;
+}
+
+.btn-sponsor:hover {
+  background: rgba(126, 85, 179, 0.34);
   border-color: var(--accent-purple);
   color: #ffffff;
 }
@@ -2007,5 +2031,15 @@
     background: var(--bg-card-hover);
     color: #ffffff;
     border: 1px solid var(--border-muted);
+  }
+
+  .mobile-action-btn.sponsor-btn {
+    background: rgba(126, 85, 179, 0.16);
+    color: #e6def5;
+    border: 1px solid rgba(126, 85, 179, 0.4);
+  }
+
+  .header-sponsor-btn {
+    display: none;
   }
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Star, Menu, X } from 'lucide-react';
+import { Star, Heart, Menu, X } from 'lucide-react';
 import { WasmIcon } from './WasmIcon';
 
 interface NavbarProps {
@@ -57,6 +57,18 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
 
         {/* Right Actions */}
         <div className="nav-right">
+          {/* Sponsor */}
+          <a
+            href="https://github.com/sponsors/eval-exec"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="github-btn header-sponsor-btn"
+            aria-label="Sponsor eval-exec on GitHub"
+          >
+            <Heart size={13} fill="currentColor" aria-hidden="true" />
+            <span>Sponsor</span>
+          </a>
+
           {/* GitHub Star */}
           <a
             href="https://github.com/eval-exec/neomacs"
@@ -143,6 +155,15 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
             >
               <Star size={14} fill="currentColor" />
               <span>GitHub Repository</span>
+            </a>
+            <a
+              href="https://github.com/sponsors/eval-exec"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-action-btn sponsor-btn"
+            >
+              <Heart size={14} fill="currentColor" />
+              <span>Sponsor NEO Emacs</span>
             </a>
           </div>
         </div>
