@@ -10,7 +10,7 @@ export const Footer = () => {
             <span className="brand-bracket">[</span>
             <img className="brand-icon" src="/favicon.svg" alt="" aria-hidden="true" />
             <span className="brand-bracket">]</span>
-            <span className="brand-name">neomacs</span>
+            <span className="brand-name">NEO Emacs</span>
             <span className="brand-chip">core: rust</span>
           </div>
           <p className="brand-desc">
@@ -96,13 +96,6 @@ export const Footer = () => {
 
       <div className="container footer-meta-dense">
         <span>© 2026 NEO Emacs Project · GPL-3.0 Free Software</span>
-        <div className="meta-telem-line">
-          <span>ARCH: x86_64 / aarch64</span>
-          <span className="sep">/</span>
-          <span>COMPOSITOR: wgpu (vulkan/metal/dx12)</span>
-          <span className="sep">/</span>
-          <span>VM: neovm (rust)</span>
-        </div>
       </div>
     </footer>
   );

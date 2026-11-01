@@ -1,0 +1,133 @@
+{
+  "tag": "v0.0.20",
+  "version": "0.0.20",
+  "publishedAt": "2026-10-24T21:57:55Z",
+  "assets": [
+    {
+      "name": "neomacs-0.0.20-1.el9.aarch64.rpm",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-1.el9.aarch64.rpm",
+      "os": "linux",
+      "kind": ".rpm",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-1.el9.x86_64.rpm",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-1.el9.x86_64.rpm",
+      "os": "linux",
+      "kind": ".rpm",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-apple-darwin.dmg",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-apple-darwin.dmg",
+      "os": "macos",
+      "kind": ".dmg",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-apple-darwin.tar.gz",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-apple-darwin.tar.gz",
+      "os": "macos",
+      "kind": ".tar.gz",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-apple-darwin.zip",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-apple-darwin.zip",
+      "os": "macos",
+      "kind": ".zip",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-pc-windows-msvc-user-setup.exe",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-pc-windows-msvc-user-setup.exe",
+      "os": "windows",
+      "kind": "Installer",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-pc-windows-msvc.zip",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-pc-windows-msvc.zip",
+      "os": "windows",
+      "kind": ".zip",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-unknown-linux-gnu.AppImage",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-unknown-linux-gnu.AppImage",
+      "os": "linux",
+      "kind": "AppImage",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-aarch64-unknown-linux-gnu.tar.gz",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-aarch64-unknown-linux-gnu.tar.gz",
+      "os": "linux",
+      "kind": ".tar.gz",
+      "arch": "aarch64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-apple-darwin.dmg",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-apple-darwin.dmg",
+      "os": "macos",
+      "kind": ".dmg",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-apple-darwin.tar.gz",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-apple-darwin.tar.gz",
+      "os": "macos",
+      "kind": ".tar.gz",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-apple-darwin.zip",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-apple-darwin.zip",
+      "os": "macos",
+      "kind": ".zip",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-pc-windows-msvc-user-setup.exe",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-pc-windows-msvc-user-setup.exe",
+      "os": "windows",
+      "kind": "Installer",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-pc-windows-msvc.zip",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-pc-windows-msvc.zip",
+      "os": "windows",
+      "kind": ".zip",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-unknown-linux-gnu.AppImage",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-unknown-linux-gnu.AppImage",
+      "os": "linux",
+      "kind": "AppImage",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs-0.0.20-x86_64-unknown-linux-gnu.tar.gz",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs-0.0.20-x86_64-unknown-linux-gnu.tar.gz",
+      "os": "linux",
+      "kind": ".tar.gz",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs_0.0.20_amd64.deb",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs_0.0.20_amd64.deb",
+      "os": "linux",
+      "kind": ".deb",
+      "arch": "x86_64"
+    },
+    {
+      "name": "neomacs_0.0.20_arm64.deb",
+      "url": "https://github.com/eval-exec/neomacs/releases/download/v0.0.20/neomacs_0.0.20_arm64.deb",
+      "os": "linux",
+      "kind": ".deb",
+      "arch": "aarch64"
+    }
+  ]
+}

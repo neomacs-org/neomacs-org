@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Star, Menu, X, ChevronRight } from 'lucide-react';
+import { Star, Menu, X } from 'lucide-react';
 import { WasmIcon } from './WasmIcon';
 
 interface NavbarProps {
@@ -24,44 +24,28 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
         {/* Brand */}
         <div className="nav-left">
           <a href="#" className="logo">
-            <span className="logo-bracket">[</span>
             <img
               className="header-window-icon"
               src="/favicon.svg"
               alt="NEO Emacs logo"
               aria-hidden="true"
             />
-            <span className="logo-bracket">]</span>
-            <span className="logo-text">neomacs</span>
-            <span className="logo-version">v1.0-alpha</span>
+            <span className="logo-text">NEO Emacs</span>
+            <span className="logo-wip">(WIP)</span>
           </a>
 
-          {/* High-density telemetry pill */}
-          <div className="nav-telemetry-badge" title="Active development: WebAssembly build online">
-            <span className="status-indicator-dot" aria-hidden="true" />
-            <span className="telem-label">wgpu: 120hz</span>
-            <span className="telem-sep">|</span>
-            <a
-              href="#wasm-sandbox"
-              onClick={() => onBootWasm?.()}
-              className="telem-wasm-link"
-            >
-              <span>wasm target online</span>
-              <ChevronRight size={11} />
-            </a>
-          </div>
         </div>
 
         {/* Dense Nav Links */}
         <nav className="nav-center" aria-label="Main Navigation">
-          <a href="#wasm-sandbox" className="nav-link" onClick={() => onBootWasm?.()}>
-            <span className="nav-idx">01/</span>WASM Runner
+          <a href="#download" className="nav-link">
+            <span className="nav-idx">01/</span>Download
+          </a>
+          <a href="#try" className="nav-link">
+            <span className="nav-idx">02/</span>Try NEO Emacs
           </a>
           <a href="#architecture" className="nav-link">
-            <span className="nav-idx">02/</span>Architecture
-          </a>
-          <a href="#benchmarks" className="nav-link">
-            <span className="nav-idx">03/</span>Benchmarks
+            <span className="nav-idx">03/</span>Architecture
           </a>
           <a href="#features" className="nav-link">
             <span className="nav-idx">04/</span>Features
@@ -73,17 +57,6 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
 
         {/* Right Actions */}
         <div className="nav-right">
-          {/* WASM CTA */}
-          <a
-            href="#wasm-sandbox"
-            onClick={() => onBootWasm?.()}
-            className="nav-wasm-btn"
-            title="Launch WebAssembly build in browser"
-          >
-            <WasmIcon size={13} />
-            <span>Try WASM</span>
-          </a>
-
           {/* GitHub Star */}
           <a
             href="https://github.com/eval-exec/neomacs"
@@ -114,28 +87,25 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
         <div className="mobile-drawer">
           <div className="mobile-nav-links">
             <a
-              href="#wasm-sandbox"
+              href="#download"
               className="mobile-link"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onBootWasm?.();
-              }}
+              onClick={() => setMobileMenuOpen(false)}
             >
-              [01] WASM Sandbox Runner
+              [01] Download
+            </a>
+            <a
+              href="#try"
+              className="mobile-link"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              [02] Try NEO Emacs
             </a>
             <a
               href="#architecture"
               className="mobile-link"
               onClick={() => setMobileMenuOpen(false)}
             >
-              [02] Rust & GPU Architecture
-            </a>
-            <a
-              href="#benchmarks"
-              className="mobile-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              [03] Telemetry & Benchmarks
+              [03] Rust & GPU Architecture
             </a>
             <a
               href="#features"
@@ -149,7 +119,7 @@ export const Navbar = ({ onBootWasm }: NavbarProps) => {
               className="mobile-link"
               onClick={() => setMobileMenuOpen(false)}
             >
-              [05] Backers & Sponsors
+              [05] Sponsors
             </a>
           </div>
 

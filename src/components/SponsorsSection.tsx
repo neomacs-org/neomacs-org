@@ -64,9 +64,9 @@ export const SponsorsSection = () => {
         <div className="section-header-dense">
           <div className="section-label">
             <span className="mono-idx">[05]</span>
-            <span className="mono-title">COMMUNITY_BACKERS</span>
+            <span className="mono-title">NEO_EMACS_SPONSORS</span>
           </div>
-          <h2>Free Software. Funded by the Community.</h2>
+          <h2>Free Software.</h2>
           <p className="section-sub-dense">
             NEO Emacs is licensed under{' '}
             <a
@@ -79,7 +79,7 @@ export const SponsorsSection = () => {
               <Scale size={11} aria-hidden="true" />
               GPL-3.0
             </a>
-            . Independent, non-commercial, and forever free.
+            , the same licence as GNU Emacs.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export const SponsorsSection = () => {
               </div>
               <div className="sponsor-meta-dense">
                 <span className="meta-name">{anonymousCount} Anonymous Supporters</span>
-                <span className="meta-login">community</span>
+                <span className="meta-login">anonymous</span>
               </div>
             </div>
           )}
@@ -126,7 +126,7 @@ export const SponsorsSection = () => {
               <UserPlus size={16} />
             </div>
             <div className="sponsor-meta-dense">
-              <span className="meta-name join-text">Become a Backer</span>
+              <span className="meta-name join-text">Become a Sponsor</span>
               <span className="meta-login">github.com/sponsors</span>
             </div>
           </a>

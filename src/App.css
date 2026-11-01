@@ -118,71 +118,27 @@
   letter-spacing: -0.02em;
 }
 
-.logo-bracket {
-  color: var(--muted-color);
-  font-weight: 400;
-}
-
 .header-window-icon {
-  width: 18px;
-  height: 18px;
+  width: calc(var(--navbar-height) * 0.8);
+  height: calc(var(--navbar-height) * 0.8);
+  animation: mark-spin 10s linear infinite;
 }
 
 .logo-text {
   color: #ffffff;
+  font-size: calc(var(--navbar-height) * 0.6);
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.logo-version {
-  font-size: 0.68rem;
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  padding: 1px 5px;
-  border-radius: var(--radius-sm);
-  margin-left: 0.25rem;
-  font-weight: 600;
-}
-
-.nav-telemetry-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 2px 7px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-muted);
-  border-radius: var(--radius-sm);
+.logo-wip {
+  align-self: center;
+  color: var(--accent-orange);
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--text-dim);
-}
-
-.status-indicator-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent-green);
-  box-shadow: 0 0 5px var(--accent-green);
-}
-
-.telem-label {
-  color: var(--text-dim);
-}
-
-.telem-sep {
-  color: var(--border-muted);
-}
-
-.telem-wasm-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  color: var(--accent-cyan);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.telem-wasm-link:hover {
-  text-decoration: underline;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .nav-center {
@@ -214,27 +170,6 @@
   gap: 0.65rem;
 }
 
-
-.nav-wasm-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: var(--accent-orange);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-
-.nav-wasm-btn:hover {
-  background: rgba(245, 158, 11, 0.18);
-  border-color: var(--accent-orange);
-}
 
 .github-btn {
   display: inline-flex;
@@ -372,9 +307,9 @@
 
 .cockpit-container {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   z-index: 1;
 }
@@ -382,6 +317,10 @@
 .cockpit-left {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 .cockpit-sys-badge {
@@ -395,7 +334,7 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   margin-bottom: 1.25rem;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .status-ping {
@@ -411,17 +350,76 @@
 .sys-sep { color: var(--border-muted); }
 
 .cockpit-title {
-  font-size: 2.75rem;
+  font-size: 7rem;
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.04em;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0;
   color: #ffffff;
 }
 
-.title-accent {
-  color: var(--accent-cyan);
-  text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+/* Hero lockup mirroring assets/banner.svg: taijitu mark, gradient wordmark,
+   lavender tagline centred beneath the whole lockup. */
+.hero-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1.25rem 2rem;
+  /* Same panel treatment as the banner: its background gradient and frame. */
+  background: linear-gradient(135deg, #0e0b17 0%, #09070f 55%, #120d14 100%);
+  border: 1px solid #2a2240;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.hero-lockup-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* 98px box with the mark's 4/48 padding => the visible taijitu is ~82px,
+   the same height as the 7rem wordmark's capitals. */
+.hero-mark {
+  width: 98px;
+  height: 98px;
+  flex-shrink: 0;
+  animation: mark-spin 10s linear infinite;
+}
+
+@keyframes mark-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark,
+  .header-window-icon { animation: none; }
+}
+
+.hero-tagline {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #a79ecb;
+}
+
+/* Wordmark colours lifted from assets/banner.svg: NEO is a gold gradient,
+   Emacs a white-to-lavender one. */
+.title-neo {
+  background: linear-gradient(180deg, #ffc95c 0%, #ff8c1a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-emacs {
+  background: linear-gradient(180deg, #ffffff 0%, #cdc4e6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .cockpit-sub {
@@ -431,13 +429,10 @@
   margin-bottom: 1.5rem;
 }
 
-.cockpit-install {
-  margin-bottom: 1.5rem;
-}
-
 .cockpit-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.65rem;
   flex-wrap: wrap;
   margin-bottom: 1.75rem;
@@ -493,37 +488,6 @@
 
 .ico-yt { color: #ff3333; }
 
-.cockpit-pills-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.cp-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted-color);
-  background: #08080b;
-  border: 1px solid var(--border-subtle);
-  padding: 2px 7px;
-  border-radius: var(--radius-sm);
-}
-
-.cp-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent-cyan);
-}
-
-.cp-text strong {
-  color: #ffffff;
-}
-
 .cockpit-right {
   position: relative;
 }
@@ -532,6 +496,7 @@
    Genuine WASM Sandbox Component (Option A Embed)
    -------------------------------------------------------------------------- */
 .wasm-sandbox-card {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
   background: #060608;
   border: 1px solid var(--border-muted);
   border-radius: var(--radius-sm);
@@ -555,7 +520,7 @@
 .sandbox-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   padding: 6px 12px;
   background: #0b0c10;
   border-bottom: 1px solid var(--border-muted);
@@ -600,14 +565,11 @@
   font-weight: 600;
 }
 
-.meta-sep {
-  color: var(--border-subtle);
-}
-
 .sandbox-actions {
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-left: auto;
 }
 
 .sandbox-btn {
@@ -637,7 +599,7 @@
 }
 
 .sandbox-body {
-  height: 520px;
+  height: 640px;
   background: #000000;
   display: flex;
   flex-direction: column;
@@ -648,36 +610,23 @@
 }
 
 .wasm-frame-container {
+  --wasm-scale: 1.1;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
-.wasm-status-banner {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #090a0d;
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 4px 10px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--accent-green);
-}
-
-.status-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-green);
-  box-shadow: 0 0 6px var(--accent-green);
-  flex-shrink: 0;
-}
-
+/* Scale the embedded app without changing the card size: lay the iframe out at
+   1/scale of the frame, then scale it back up visually. >1 zooms the app in (it
+   reflows to a smaller viewport), <1 zooms out to show more of it. */
 .wasm-iframe {
-  flex: 1;
-  width: 100%;
+  flex: none;
+  width: calc(100% / var(--wasm-scale));
+  height: calc(100% / var(--wasm-scale));
+  transform: scale(var(--wasm-scale));
+  transform-origin: top left;
   border: none;
   background: #000000;
 }
@@ -686,44 +635,62 @@
 .wasm-standby-view {
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   padding: 2rem;
   background: radial-gradient(circle at 50% 40%, #0d0e14 0%, #040406 100%);
 }
 
 .standby-content {
-  max-width: 440px;
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.standby-brand-row {
+.standby-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.standby-logos {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  margin-bottom: 1.1rem;
 }
 
 .standby-logo {
-  width: 36px;
-  height: 36px;
+  width: 88px;
+  height: 88px;
 }
 
-.standby-title-wrap {
-  text-align: left;
+.standby-logo-plus {
+  color: var(--muted-color);
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.standby-title-wrap h3 {
-  font-size: 1.05rem;
+.standby-title {
+  font-size: 2.75rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
+  margin-bottom: 0.35rem;
 }
 
 .standby-badge {
+  display: block;
+  margin-bottom: 0.85rem;
   font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
@@ -732,47 +699,49 @@
 }
 
 .standby-desc {
-  font-size: 0.85rem;
+  max-width: 430px;
+  font-size: 0.88rem;
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 1.25rem;
 }
 
-.standby-specs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.standby-specs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.4rem;
-  width: 100%;
+}
+
+.standby-spec {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 4px 8px;
   background: #08080c;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0.6rem;
-  margin-bottom: 1.5rem;
-}
-
-.spec-box {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
 }
 
 .spec-k {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   color: var(--muted-color);
   font-weight: 700;
 }
 
-.spec-v {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #ffffff;
+.standby-footer {
+  width: 100%;
+  margin-top: auto;
 }
 
 .standby-cta-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
   width: 100%;
   margin-bottom: 1rem;
@@ -783,7 +752,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
+  flex: 1;
   padding: 0.75rem 1rem;
   background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
   border: none;
@@ -808,26 +777,28 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   background: #0a0b0f;
   border: 1px solid var(--border-muted);
   border-radius: var(--radius-sm);
   color: var(--text-dim);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
   transition: all 0.15s ease;
 }
 
 .boot-wasm-secondary-btn:hover {
-  border-color: #555555;
+  border-color: var(--border-active);
   color: #ffffff;
 }
 
 .standby-footnote {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   font-size: 0.7rem;
   color: var(--muted-color);
@@ -1766,27 +1737,151 @@
   gap: 0.75rem;
 }
 
-.meta-telem-line {
+/* --------------------------------------------------------------------------
+   Downloads (High Density)
+   -------------------------------------------------------------------------- */
+/* The download block is embedded inside the hero, between the hero copy and the
+   sandbox, so drop the global section padding and divider. */
+.cockpit-container .download-section-dense {
+  padding: 0;
+  border-bottom: none;
+}
+
+/* The hero's grid gap already spaces the [02] header from the sandbox. */
+.wasm-section-header {
+  margin-bottom: 0;
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+
+.download-grid-dense {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.download-card-dense {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.download-card-dense.detected {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12);
+}
+
+.download-card-head {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 
-.meta-telem-line .sep {
-  color: var(--border-muted);
+.download-platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.download-detected {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-cyan);
+}
+
+.download-primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: var(--radius-sm);
+  color: #09090b;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.download-primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
+}
+
+.download-arch {
+  color: var(--muted-color);
+  font-weight: 500;
+}
+
+.download-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.download-link {
+  padding: 2px 6px;
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.download-link:hover {
+  border-color: var(--border-active);
+  color: #ffffff;
+}
+
+.download-footer-dense {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted-color);
+}
+
+.download-footer-dense a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+.download-footer-dense a:hover {
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------
    Responsive Rules
    -------------------------------------------------------------------------- */
 @media (max-width: 1100px) {
-  .cockpit-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .cockpit-title {
+    font-size: 5.5rem;
   }
 
-  .cockpit-title {
-    font-size: 2.4rem;
+  .hero-mark {
+    width: 77px;
+    height: 77px;
   }
 
   .card-span-6, .card-span-4 {
@@ -1799,8 +1894,42 @@
 }
 
 @media (max-width: 768px) {
-  .nav-center, .nav-telemetry-badge {
+  .nav-center {
     display: none;
+  }
+
+  .sandbox-body {
+    height: 420px;
+  }
+
+  .wasm-standby-view {
+    padding: 1.25rem;
+  }
+
+  .standby-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .standby-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-lockup {
+    padding: 0.75rem 1rem;
+  }
+
+  .hero-lockup-row {
+    gap: 0.5rem;
+  }
+
+  .hero-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
   }
 
   .mobile-toggle-btn {
@@ -1812,7 +1941,7 @@
   }
 
   .cockpit-title {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .main-navbar {

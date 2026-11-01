@@ -1,37 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-labelledby="title desc">
-  <title id="title">NEO Emacs taijitu window icon</title>
-  <desc id="desc">Blue and orange taijitu mark with two centrosymmetric lambda symbols.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-labelledby="title desc">
+  <title id="title">NEO Emacs taijitu mark</title>
+  <desc id="desc">Purple and orange taijitu mark with two centrosymmetric lambda symbols.</desc>
 
+  <!-- Mark colours identical to assets/banner.svg in eval-exec/neomacs. -->
   <defs>
-    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.42"/>
+    <linearGradient id="emacsPurple" x1="20" y1="40" x2="20" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#411f5d"/>
+      <stop offset="0.35" stop-color="#5b2a85"/>
+      <stop offset="0.7" stop-color="#7e55b3"/>
+      <stop offset="1" stop-color="#8381c5"/>
+    </linearGradient>
+    <linearGradient id="emacsOrange" x1="20" y1="0" x2="20" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9a3f00"/>
+      <stop offset="0.35" stop-color="#d05f00"/>
+      <stop offset="0.7" stop-color="#ff9900"/>
+      <stop offset="1" stop-color="#ffd166"/>
+    </linearGradient>
+    <filter id="markGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#3b1a63" flood-opacity="0.55"/>
     </filter>
   </defs>
 
-  <g transform="scale(10)" filter="url(#softShadow)">
-    <circle cx="20" cy="20" r="20" fill="#07101a" opacity="0.62"/>
-    <circle cx="20" cy="20" r="18.5" fill="#16aee8" stroke="#07101a" stroke-width="1.1"/>
-    <path
-      d="M20 1.5 a18.5 18.5 0 0 1 0 37 a9.25 9.25 0 0 1 0 -18.5 a9.25 9.25 0 0 0 0 -18.5 Z"
-      fill="#ff9900"/>
-    <circle cx="20" cy="20" r="18.5" fill="none" stroke="#d7f6ff" stroke-opacity="0.34" stroke-width="0.42"/>
-    <text
-      x="16"
-      y="18"
-      text-anchor="middle"
-      font-size="16.5"
-      font-weight="700"
-      fill="#0d0d12"
-      font-family="JetBrains Mono, Cascadia Code, Menlo, Consolas, monospace"
-      transform="rotate(225 16 12)">λ</text>
-    <text
-      x="16"
-      y="18"
-      text-anchor="middle"
-      font-size="16.5"
-      font-weight="700"
-      fill="#0d0d12"
-      font-family="JetBrains Mono, Cascadia Code, Menlo, Consolas, monospace"
-      transform="rotate(180 20 20) rotate(225 16 12)">λ</text>
+  <g transform="translate(4 4)" filter="url(#markGlow)">
+    <g transform="rotate(45 20 20)">
+      <circle cx="20" cy="20" r="20" fill="url(#emacsPurple)"/>
+      <path d="M20 0 a20 20 0 0 1 0 40 a10 10 0 0 1 0 -20 a10 10 0 0 0 0 -20 Z" fill="url(#emacsOrange)"/>
+      <g fill="#0d0d12" transform="translate(4.1 -2) rotate(270 13.4 12) translate(13.4 12) scale(1.35) translate(-13.4 -12)"><path d="M10.9 7.6 C13.3 10.3 12.2 13.1 10.2 15.9 Q9.8 16.5 10.4 16.8 Q11 17.1 11.5 16.5 C12.4 15.1 13.1 13.7 13.8 12.1 C14.4 13.6 15 15 15.6 16.3 Q15.9 16.9 16.5 16.7 Q17.1 16.5 16.8 15.9 C15.7 12.5 14.3 9.4 12.8 7.6 Q11.8 6.7 10.9 7.6 Z"/></g>
+      <g fill="#0d0d12" transform="rotate(180 20 20) translate(4.1 -2) rotate(270 13.4 12) translate(13.4 12) scale(1.35) translate(-13.4 -12)"><path d="M10.9 7.6 C13.3 10.3 12.2 13.1 10.2 15.9 Q9.8 16.5 10.4 16.8 Q11 17.1 11.5 16.5 C12.4 15.1 13.1 13.7 13.8 12.1 C14.4 13.6 15 15 15.6 16.3 Q15.9 16.9 16.5 16.7 Q17.1 16.5 16.8 15.9 C15.7 12.5 14.3 9.4 12.8 7.6 Q11.8 6.7 10.9 7.6 Z"/></g>
+    </g>
   </g>
 </svg>

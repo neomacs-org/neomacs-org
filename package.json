@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predev": "node scripts/fetch-release.mjs",
     "fetch-sponsors": "node scripts/fetch-sponsors.mjs",
+    "fetch-release": "node scripts/fetch-release.mjs",
     "lint": "node scripts/lint-css.mjs",
-    "prebuild": "node scripts/fetch-sponsors.mjs && node scripts/lint-css.mjs",
+    "prebuild": "node scripts/fetch-release.mjs && node scripts/fetch-sponsors.mjs && node scripts/lint-css.mjs",
     "build": "tsc && vite build",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"

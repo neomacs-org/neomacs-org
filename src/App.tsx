@@ -12,9 +12,8 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
-import { InstallWidget } from './components/InstallWidget';
 import { ArchitectureBento } from './components/ArchitectureBento';
-import { BenchmarkSection } from './components/BenchmarkSection';
+import { DownloadSection } from './components/DownloadSection';
 import { WasmSandbox } from './components/WasmSandbox';
 import { SponsorsSection } from './components/SponsorsSection';
 import { Footer } from './components/Footer';
@@ -78,21 +77,21 @@ const HeroCockpit = ({
           <span className="sys-val">120_FPS</span>
         </div>
 
-        <h1 className="cockpit-title">
-          THE <span className="title-accent">REVOLUTIONARY</span> <br />
-          GPU EMACS ENGINE.
-        </h1>
+        <div className="hero-lockup">
+          <div className="hero-lockup-row">
+            <img className="hero-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+            <h1 className="cockpit-title">
+              <span className="title-neo">NEO</span> <span className="title-emacs">Emacs</span>
+            </h1>
+          </div>
+          <p className="hero-tagline">Next generation of Emacs</p>
+        </div>
 
         <p className="cockpit-sub">
           Performance-first. 100% Hackable. Blazing 120 FPS.
           Systematic Rust core rewrite with a native hardware compositor,
           preemptive multi-threaded Elisp VM, and zero configuration breakages.
         </p>
-
-        {/* Compact Terminal Install Widget */}
-        <div className="cockpit-install">
-          <InstallWidget />
-        </div>
 
         {/* Action CTAs */}
         <div className="cockpit-actions">
@@ -103,7 +102,7 @@ const HeroCockpit = ({
             title="Launch in-page WebAssembly sandbox"
           >
             <WasmIcon size={14} />
-            <span>Launch In-Page WASM</span>
+            <span>Launch WASM</span>
           </button>
 
           <a
@@ -113,7 +112,7 @@ const HeroCockpit = ({
             className="btn-dense btn-primary"
           >
             <Github size={14} aria-hidden="true" />
-            <span>Source Code (GitHub)</span>
+            <span>View Source</span>
           </a>
 
           <a
@@ -123,25 +122,23 @@ const HeroCockpit = ({
             className="btn-dense btn-ghost"
           >
             <Youtube size={14} className="ico-yt" aria-hidden="true" />
-            <span>Watch 4K Demo</span>
+            <span>Watch Demo</span>
           </a>
         </div>
 
-        {/* Micro Telemetry Metrics */}
-        <div className="cockpit-pills-row">
-          <div className="cp-pill">
-            <span className="cp-dot" />
-            <span className="cp-text"><strong>10x Faster</strong> JIT Execution</span>
-          </div>
-          <div className="cp-pill">
-            <span className="cp-dot" />
-            <span className="cp-text"><strong>0.9ms</strong> Cold Startup</span>
-          </div>
-          <div className="cp-pill">
-            <span className="cp-dot" />
-            <span className="cp-text"><strong>100% Memory Safe</strong> Rust</span>
-          </div>
+      </div>
+
+      <DownloadSection />
+
+      <div id="try" className="section-header-dense wasm-section-header">
+        <div className="section-label">
+          <span className="mono-idx">[02]</span>
+          <span className="mono-title">TRY_NEO_EMACS_WASM</span>
         </div>
+        <h2>Try NEO Emacs in your browser</h2>
+        <p className="section-sub-dense">
+          The real Rust core compiled to WebAssembly — no installation required.
+        </p>
       </div>
 
       {/* Right Column: Genuine WebAssembly Sandbox */}
@@ -227,7 +224,6 @@ const App = () => {
           onBootWasm={triggerBootWasm}
         />
         <ArchitectureBento />
-        <BenchmarkSection />
         <Features />
         <SponsorsSection />
       </main>

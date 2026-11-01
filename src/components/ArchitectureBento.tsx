@@ -7,7 +7,7 @@ export const ArchitectureBento = () => {
       <div className="container">
         <div className="section-header-dense">
           <div className="section-label">
-            <span className="mono-idx">[02]</span>
+            <span className="mono-idx">[03]</span>
             <span className="mono-title">VISUAL_ARCHITECTURE_BENTO</span>
           </div>
           <h2>Engineered for Raw Speed & Zero Latency</h2>
