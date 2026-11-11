@@ -20,12 +20,6 @@
       "url": "https://github.com/mjburling"
     },
     {
-      "login": "braineo",
-      "name": "Binbin",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/3591338?u=0316d17aa74d0ca9e07e5f6e61a3d603fc3423b0&v=4",
-      "url": "https://github.com/braineo"
-    },
-    {
       "login": "mosquito-magnet",
       "name": "mosquito-magnet",
       "avatarUrl": "https://avatars.githubusercontent.com/u/24659697?v=4",
@@ -69,6 +63,12 @@
       "name": "mowind",
       "avatarUrl": "https://avatars.githubusercontent.com/u/2201590?v=4",
       "url": "https://github.com/mowind"
+    },
+    {
+      "login": "braineo",
+      "name": "Binbin",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/3591338?u=0316d17aa74d0ca9e07e5f6e61a3d603fc3423b0&v=4",
+      "url": "https://github.com/braineo"
     },
     {
       "login": "bluzky",
